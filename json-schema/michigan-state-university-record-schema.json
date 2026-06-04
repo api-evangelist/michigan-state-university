@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/michigan-state-university/main/json-schema/michigan-state-university-record-schema.json",
+  "title": "MSU Libraries Catalog Record",
+  "description": "JSON Schema for a bibliographic record returned by the MSU Libraries VuFind REST API (Library Catalog v11.0.4). Derived from the published OpenAPI 3.0.3 Record schema.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Record unique identifier"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "Universally unique identifier"
+    },
+    "bibnum": {
+      "type": "string",
+      "description": "Bibliographic record number"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title"
+    },
+    "shortTitle": {
+      "type": "string",
+      "description": "Short title without subtitle"
+    },
+    "subTitle": {
+      "type": "string",
+      "description": "Subtitle"
+    },
+    "titleSection": {
+      "type": "string",
+      "description": "Title section"
+    },
+    "titleStatement": {
+      "type": "string",
+      "description": "Title statement"
+    },
+    "edition": {
+      "type": "string",
+      "description": "Edition"
+    },
+    "formats": {
+      "type": "array",
+      "description": "Formats",
+      "items": { "type": "string" }
+    },
+    "languages": {
+      "type": "array",
+      "description": "Languages",
+      "items": { "type": "string" }
+    },
+    "publishers": {
+      "type": "array",
+      "description": "Publishers",
+      "items": { "type": "string" }
+    },
+    "publicationDates": {
+      "type": "array",
+      "description": "Publication dates",
+      "items": { "type": "string" }
+    },
+    "placesOfPublication": {
+      "type": "array",
+      "description": "Places of publication",
+      "items": { "type": "string" }
+    },
+    "isbns": {
+      "type": "array",
+      "description": "ISBNs",
+      "items": { "type": "string" }
+    },
+    "issns": {
+      "type": "array",
+      "description": "ISSNs",
+      "items": { "type": "string" }
+    },
+    "cleanIsbn": {
+      "type": "string",
+      "description": "First valid ISBN favoring ISBN-10 over ISBN-13"
+    },
+    "cleanIssn": {
+      "type": "string",
+      "description": "First valid ISSN"
+    },
+    "cleanDoi": {
+      "type": "string",
+      "description": "First valid DOI"
+    },
+    "cleanOclcNumber": {
+      "type": "string",
+      "description": "First valid OCLC number"
+    },
+    "oclc": {
+      "type": "array",
+      "description": "OCLC numbers",
+      "items": { "type": "string" }
+    },
+    "lccn": {
+      "type": "string",
+      "description": "LCCN"
+    },
+    "callNumbers": {
+      "type": "array",
+      "description": "Call numbers",
+      "items": { "type": "string" }
+    },
+    "buildings": {
+      "type": "array",
+      "description": "Buildings where the record is held",
+      "items": { "type": "string" }
+    },
+    "institutions": {
+      "type": "array",
+      "description": "Institutions",
+      "items": { "type": "string" }
+    },
+    "bibliographicLevel": {
+      "type": "string",
+      "description": "Bibliographic level",
+      "enum": ["Monograph", "Serial", "MonographPart", "SerialPart", "Collection", "CollectionPart", "Unknown"]
+    },
+    "authors": {
+      "type": "object",
+      "description": "Deduplicated author information including primary, corporate and secondary authors",
+      "properties": {
+        "primary": { "type": "object", "additionalProperties": { "$ref": "#/$defs/AuthorWithRoles" } },
+        "secondary": { "type": "object", "additionalProperties": { "$ref": "#/$defs/AuthorWithRoles" } },
+        "corporate": { "type": "object", "additionalProperties": { "$ref": "#/$defs/AuthorWithRoles" } }
+      }
+    },
+    "subjects": {
+      "type": "array",
+      "description": "Subjects",
+      "items": { "$ref": "#/$defs/Subject" }
+    },
+    "series": {
+      "type": "array",
+      "description": "Series",
+      "items": { "type": "string" }
+    },
+    "summary": {
+      "type": "array",
+      "description": "Summary notes",
+      "items": { "type": "string" }
+    },
+    "physicalDescriptions": {
+      "type": "array",
+      "description": "Physical descriptions",
+      "items": { "type": "string" }
+    },
+    "urls": {
+      "type": "array",
+      "description": "URLs",
+      "items": { "$ref": "#/$defs/Url" }
+    },
+    "recordPage": {
+      "type": "string",
+      "description": "Record page URL in the catalog UI"
+    },
+    "isCollection": {
+      "type": "boolean",
+      "description": "Whether the record is a collection"
+    },
+    "childRecordCount": {
+      "type": "integer",
+      "description": "Number of child records"
+    }
+  },
+  "$defs": {
+    "AuthorWithRoles": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "array",
+          "description": "Author's roles",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Subject": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "array",
+          "description": "Subject heading parts from least to most specific",
+          "items": { "type": "string" }
+        },
+        "type": {
+          "type": "string",
+          "description": "Subject type",
+          "enum": ["", "personal name", "corporate name", "meeting name", "uniform title", "chronological", "topic", "geographic", "genre/form", "occupation", "keyword"]
+        },
+        "source": {
+          "type": "string",
+          "description": "Subject source/thesaurus (e.g. lcsh, mesh)"
+        }
+      }
+    },
+    "Url": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "description": "URL" },
+        "desc": { "type": "string", "description": "URL Description" }
+      }
+    }
+  }
+}

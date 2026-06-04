@@ -1,0 +1,63 @@
+---
+# Spectral ruleset encoding patterns observed in the MSU Libraries VuFind
+# Catalog REST API (OpenAPI 3.0.3, Library Catalog v11.0.4).
+formats:
+  - oas3
+rules:
+  msu-info-title-present:
+    description: API info object must declare a title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+
+  msu-info-version-present:
+    description: API info object must declare a version.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  msu-server-https:
+    description: Catalog API servers should be served over HTTPS.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  msu-operations-have-200:
+    description: Every GET operation should define a 200 response (search/record endpoints return SearchResponse).
+    severity: warn
+    given: $.paths[*].get.responses
+    then:
+      field: "200"
+      function: truthy
+
+  msu-search-response-status-ok:
+    description: SearchResponse status enum should constrain to OK.
+    severity: info
+    given: $.components.schemas.SearchResponse.properties.status
+    then:
+      field: enum
+      function: truthy
+
+  msu-record-id-string:
+    description: Record id should be typed as a string identifier.
+    severity: warn
+    given: $.components.schemas.Record.properties.id
+    then:
+      field: type
+      function: truthy
+
+  msu-paths-kebab-or-flat:
+    description: Catalog paths use flat lowercase segments (e.g. /search, /record, /web/search); avoid uppercase path segments.
+    severity: info
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[a-z0-9/_-]*$"

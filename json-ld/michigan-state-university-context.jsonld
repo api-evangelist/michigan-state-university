@@ -1,0 +1,80 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "msu": "https://catalog.lib.msu.edu/api/v1/#",
+    "@vocab": "https://catalog.lib.msu.edu/api/v1/#",
+
+    "institution": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "url": "schema:url",
+
+    "Record": "schema:CreativeWork",
+    "id": "schema:identifier",
+    "uuid": "schema:identifier",
+    "title": "schema:name",
+    "shortTitle": "schema:alternateName",
+    "subTitle": "schema:alternativeHeadline",
+    "edition": "schema:bookEdition",
+    "formats": "schema:additionalType",
+    "languages": "schema:inLanguage",
+    "publishers": "schema:publisher",
+    "publicationDates": {
+      "@id": "schema:datePublished",
+      "@type": "schema:Date"
+    },
+    "placesOfPublication": "schema:locationCreated",
+    "isbns": "schema:isbn",
+    "cleanIsbn": "schema:isbn",
+    "issns": "schema:issn",
+    "cleanIssn": "schema:issn",
+    "cleanDoi": {
+      "@id": "schema:sameAs",
+      "@type": "@id"
+    },
+    "lccn": "schema:identifier",
+    "callNumbers": "schema:identifier",
+    "buildings": "schema:contentLocation",
+    "institutions": "schema:provider",
+    "series": "schema:isPartOf",
+    "summary": "schema:abstract",
+    "physicalDescriptions": "schema:material",
+    "recordPage": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+
+    "authors": "schema:author",
+    "primary": "schema:author",
+    "secondary": "schema:contributor",
+    "corporate": {
+      "@id": "schema:author",
+      "@type": "schema:Organization"
+    },
+
+    "subjects": "schema:about",
+    "subject": "schema:name",
+    "heading": "schema:name",
+    "source": "schema:inDefinedTermSet",
+
+    "urls": "schema:url",
+    "desc": "schema:description",
+
+    "facets": "schema:itemListElement",
+    "facet": "schema:DefinedTerm",
+    "value": "schema:value",
+    "count": "schema:count",
+    "resultCount": "schema:numberOfItems"
+  },
+  "@type": "schema:CollegeOrUniversity",
+  "name": "Michigan State University",
+  "url": "https://www.msu.edu",
+  "schema:department": {
+    "@type": "schema:Library",
+    "name": "MSU Libraries",
+    "url": "https://lib.msu.edu"
+  }
+}

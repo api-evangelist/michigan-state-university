@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/michigan-state-university/main/json-structure/michigan-state-university-record-structure.json",
+  "name": "MSULibrariesCatalogRecord",
+  "description": "JSON Structure for a bibliographic record from the MSU Libraries VuFind REST API. Derived from the OpenAPI 3.0.3 Record schema.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Record unique identifier" },
+    "uuid": { "type": "string", "description": "Universally unique identifier" },
+    "title": { "type": "string", "description": "Title" },
+    "shortTitle": { "type": "string", "description": "Short title without subtitle" },
+    "subTitle": { "type": "string", "description": "Subtitle" },
+    "edition": { "type": "string", "description": "Edition" },
+    "bibliographicLevel": { "type": "string", "description": "Bibliographic level" },
+    "formats": { "type": "array", "items": { "type": "string" }, "description": "Formats" },
+    "languages": { "type": "array", "items": { "type": "string" }, "description": "Languages" },
+    "publishers": { "type": "array", "items": { "type": "string" }, "description": "Publishers" },
+    "publicationDates": { "type": "array", "items": { "type": "string" }, "description": "Publication dates" },
+    "placesOfPublication": { "type": "array", "items": { "type": "string" }, "description": "Places of publication" },
+    "isbns": { "type": "array", "items": { "type": "string" }, "description": "ISBNs" },
+    "issns": { "type": "array", "items": { "type": "string" }, "description": "ISSNs" },
+    "cleanIsbn": { "type": "string", "description": "First valid ISBN" },
+    "cleanIssn": { "type": "string", "description": "First valid ISSN" },
+    "cleanDoi": { "type": "string", "description": "First valid DOI" },
+    "cleanOclcNumber": { "type": "string", "description": "First valid OCLC number" },
+    "lccn": { "type": "string", "description": "LCCN" },
+    "callNumbers": { "type": "array", "items": { "type": "string" }, "description": "Call numbers" },
+    "buildings": { "type": "array", "items": { "type": "string" }, "description": "Buildings where the record is held" },
+    "institutions": { "type": "array", "items": { "type": "string" }, "description": "Institutions" },
+    "series": { "type": "array", "items": { "type": "string" }, "description": "Series" },
+    "summary": { "type": "array", "items": { "type": "string" }, "description": "Summary notes" },
+    "physicalDescriptions": { "type": "array", "items": { "type": "string" }, "description": "Physical descriptions" },
+    "recordPage": { "type": "string", "description": "Record page URL in the catalog UI" },
+    "isCollection": { "type": "boolean", "description": "Whether the record is a collection" },
+    "childRecordCount": { "type": "integer", "description": "Number of child records" },
+    "authors": {
+      "type": "object",
+      "description": "Deduplicated author information",
+      "properties": {
+        "primary": { "type": "object", "description": "Primary authors keyed by name" },
+        "secondary": { "type": "object", "description": "Secondary authors keyed by name" },
+        "corporate": { "type": "object", "description": "Corporate authors keyed by name" }
+      }
+    },
+    "subjects": {
+      "type": "array",
+      "description": "Subjects",
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": { "type": "array", "items": { "type": "string" }, "description": "Subject heading parts" },
+          "type": { "type": "string", "description": "Subject type" },
+          "source": { "type": "string", "description": "Subject source/thesaurus" }
+        }
+      }
+    },
+    "urls": {
+      "type": "array",
+      "description": "URLs",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string", "description": "URL" },
+          "desc": { "type": "string", "description": "URL description" }
+        }
+      }
+    }
+  },
+  "required": ["id"]
+}

@@ -43,6 +43,24 @@ apis:
         url: https://catalog.lib.msu.edu/api/v1
       - type: OpenAPI
         url: https://catalog.lib.msu.edu/api/v1/?swagger
+      - type: OpenAPI
+        url: openapi/michigan-state-university-catalog-rest.yaml
+      - type: x-json-schema
+        url: json-schema/michigan-state-university-record-schema.json
+      - type: x-json-schema
+        url: json-schema/michigan-state-university-searchresponse-schema.json
+      - type: x-json-structure
+        url: json-structure/michigan-state-university-record-structure.json
+      - type: x-example
+        url: examples/michigan-state-university-search-example.json
+      - type: x-example
+        url: examples/michigan-state-university-record-example.json
+      - type: x-spectral-rules
+        url: rules/michigan-state-university-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/michigan-state-university-vocabulary.yml
+      - type: x-json-ld-context
+        url: json-ld/michigan-state-university-context.jsonld
   - aid: michigan-state-university:catalog-oai
     name: MSU Libraries Catalog OAI-PMH
     description: >-

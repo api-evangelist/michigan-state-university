@@ -1,0 +1,55 @@
+---
+vocabulary:
+  name: MSU Libraries Catalog API Vocabulary
+  description: >-
+    Controlled vocabulary for the terms exposed by the Michigan State University
+    Libraries VuFind Catalog REST API (OpenAPI 3.0.3, Library Catalog v11.0.4) and
+    the associated OAI-PMH metadata harvesting endpoints. Definitions are drawn from
+    the published OpenAPI schema descriptions.
+  version: '11.0.4'
+  terms:
+    - term: record
+      definition: A bibliographic record contained in the discovery search index.
+      tags: [ bibliographic, object ]
+    - term: SearchResponse
+      definition: Response envelope containing resultCount, records, facets, an optional resumptionToken, and status.
+      tags: [ response, envelope ]
+    - term: resultCount
+      definition: The total number of results matching a search query.
+      tags: [ search, pagination ]
+    - term: facet
+      definition: A search refinement value with a count and an href for applying it as a filter; may be hierarchical.
+      tags: [ search, refinement ]
+    - term: resumptionToken
+      definition: An opaque token, with an expiry, used to retrieve the next batch of results in a large download.
+      tags: [ pagination, batch ]
+    - term: lookfor
+      definition: The query parameter carrying search terms, supporting boolean operators, quotes, and field prefixes.
+      tags: [ query, parameter ]
+    - term: type
+      definition: The search type, such as AllFields, Title, Author, Subject, CallNumber, ISN, Publisher, or Series.
+      tags: [ query, parameter ]
+    - term: filter
+      definition: A field:value filter query applied to a search; supports AND (default), OR (~) and NOT (-) semantics.
+      tags: [ query, parameter ]
+    - term: bibliographicLevel
+      definition: The level of a bibliographic record (Monograph, Serial, MonographPart, SerialPart, Collection, CollectionPart, Unknown).
+      tags: [ bibliographic, metadata ]
+    - term: authors
+      definition: Deduplicated author information grouped into primary, secondary, and corporate authors with roles.
+      tags: [ bibliographic, agent ]
+    - term: subject
+      definition: A subject heading with heading parts, a type, and a source thesaurus such as lcsh or mesh.
+      tags: [ bibliographic, subject ]
+    - term: callNumbers
+      definition: The shelving call numbers assigned to a record.
+      tags: [ bibliographic, holdings ]
+    - term: cleanIsbn
+      definition: The first valid ISBN for a record, favoring ISBN-10 over ISBN-13.
+      tags: [ identifier, bibliographic ]
+    - term: cleanOclcNumber
+      definition: The first valid OCLC number for a record.
+      tags: [ identifier, bibliographic ]
+    - term: OAI-PMH
+      definition: Open Archives Initiative Protocol for Metadata Harvesting 2.0, used to harvest catalog and digital repository metadata.
+      tags: [ harvesting, metadata, protocol ]

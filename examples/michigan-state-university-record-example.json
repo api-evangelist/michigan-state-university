@@ -1,0 +1,47 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://catalog.lib.msu.edu/api/v1/record?id=folio.in00002742351",
+    "description": "Retrieve a single bibliographic record from the MSU Libraries catalog by its record id."
+  },
+  "response": {
+    "resultCount": 1,
+    "records": [
+      {
+        "authors": {
+          "primary": [],
+          "secondary": [],
+          "corporate": {
+            "Michigan Land Use Leadership Council": {
+              "role": []
+            }
+          }
+        },
+        "formats": [
+          "Book"
+        ],
+        "id": "folio.in00002742351",
+        "uuid": "4ecc1646-5816-5848-86a2-9355ee805719",
+        "languages": [
+          "English"
+        ],
+        "series": [],
+        "subjects": [
+          [
+            { "subject": "Land use" },
+            { "subject": "Michigan" },
+            { "subject": "Planning." }
+          ],
+          [
+            { "subject": "Land use" },
+            { "subject": "Government policy" },
+            { "subject": "Michigan." }
+          ]
+        ],
+        "title": "Michigan's land, Michigan's future : final report of the Michigan Land Use Leadership Council.",
+        "urls": []
+      }
+    ],
+    "status": "OK"
+  }
+}

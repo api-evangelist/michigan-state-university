@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/michigan-state-university/main/json-structure/michigan-state-university-searchresponse-structure.json",
+  "name": "MSULibrariesCatalogSearchResponse",
+  "description": "JSON Structure for the search response envelope from the MSU Libraries VuFind REST API. Derived from the OpenAPI 3.0.3 SearchResponse schema.",
+  "type": "object",
+  "properties": {
+    "resultCount": { "type": "integer", "description": "Number of results" },
+    "status": { "type": "string", "description": "Status code (OK)" },
+    "records": {
+      "type": "array",
+      "description": "Records",
+      "items": { "type": "object", "description": "A bibliographic record (see record structure)" }
+    },
+    "facets": {
+      "type": "array",
+      "description": "Facets",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string", "description": "Facet value" },
+          "translated": { "type": "string", "description": "Translated facet value" },
+          "count": { "type": "integer", "description": "Count of records matching the facet" },
+          "href": { "type": "string", "description": "Search URL with the facet applied" },
+          "isApplied": { "type": "boolean", "description": "Whether the facet is currently applied" }
+        }
+      }
+    },
+    "resumptionToken": {
+      "type": "object",
+      "description": "Token for the next batch of results",
+      "properties": {
+        "token": { "type": "string", "description": "Token to use for the next request" },
+        "expires": { "type": "string", "description": "Time when the token expires (date-time)" }
+      }
+    }
+  },
+  "required": ["resultCount", "status"]
+}

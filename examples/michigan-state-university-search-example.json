@@ -1,0 +1,52 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://catalog.lib.msu.edu/api/v1/search?lookfor=michigan&type=AllFields&limit=1",
+    "description": "Search the MSU Libraries catalog discovery index for the term 'michigan' across all fields, returning one record."
+  },
+  "response": {
+    "resultCount": 163986,
+    "records": [
+      {
+        "authors": {
+          "primary": [],
+          "secondary": [],
+          "corporate": {
+            "Michigan Land Use Leadership Council": {
+              "role": []
+            }
+          }
+        },
+        "formats": [
+          "Book"
+        ],
+        "id": "folio.in00002742351",
+        "uuid": "4ecc1646-5816-5848-86a2-9355ee805719",
+        "languages": [
+          "English"
+        ],
+        "series": [],
+        "subjects": [
+          [
+            { "subject": "Land use" },
+            { "subject": "Michigan" },
+            { "subject": "Planning." }
+          ],
+          [
+            { "subject": "Land use" },
+            { "subject": "Government policy" },
+            { "subject": "Michigan." }
+          ],
+          [
+            { "subject": "Cities and towns" },
+            { "subject": "Michigan" },
+            { "subject": "Growth." }
+          ]
+        ],
+        "title": "Michigan's land, Michigan's future : final report of the Michigan Land Use Leadership Council / prepared for Governor Jennifer Granholm and the Michigan Legislature ; submitted by the Michigan Land Use Leadership Council.",
+        "urls": []
+      }
+    ],
+    "status": "OK"
+  }
+}
