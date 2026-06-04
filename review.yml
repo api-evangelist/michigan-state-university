@@ -1,0 +1,63 @@
+---
+name: Michigan State University
+description: Michigan State University public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/michigan-state-university/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 3
+    summary: >-
+      MSU has no single consolidated public developer portal, but several real public
+      machine interfaces were verified live: the MSU Libraries VuFind catalog REST API
+      (OpenAPI 3.0.3, VuFind v11.0.4) returned a valid OpenAPI document, and OAI-PMH 2.0
+      Identify responses were confirmed for both the catalog repository and the MSU
+      Libraries Digital Repository. MSU's Shibboleth/SAML Identity Provider responds and the
+      university documents OAuth 2.0 support, but it is gated to registered institutional
+      integrations. The d.lib /api path requires authentication (401) and no IIIF root was
+      found (404). No data.msu.edu open-data API, no api.msu.edu/developer.msu.edu host, and
+      no public status page resolved. No endpoints were fabricated; every URL below was
+      probed directly.
+    endpoints:
+      - url: https://catalog.lib.msu.edu/api/v1
+        status: 200
+        note: VuFind REST API Swagger UI; OpenAPI 3.0.3 spec served at /api/v1/?swagger.
+      - url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+        status: 200
+        note: OAI-PMH 2.0; repository "Michigan State University Libraries Catalog".
+      - url: https://d.lib.msu.edu/oai?verb=Identify
+        status: 200
+        note: OAI-PMH 2.0; repository "MSU Libraries Digital Repository".
+      - url: https://d.lib.msu.edu/api
+        status: 401
+        note: Digital repository API path exists but requires authentication.
+      - url: https://d.lib.msu.edu/iiif
+        status: 404
+        note: No IIIF root found at this path.
+      - url: https://idp.idm.msu.edu/idp/shibboleth
+        status: 200
+        note: Shibboleth/SAML Identity Provider metadata endpoint responds.
+      - url: https://tech.msu.edu/network/authentication-authorization/
+        status: 200
+        note: MSU IT docs for Shibboleth, SAML, and OAuth 2.0 authentication.
+      - url: https://github.com/Michigan-State-University
+        status: 200
+        note: Official MSU GitHub organization.
+      - url: https://github.com/MSU-Libraries
+        status: 200
+        note: MSU Libraries GitHub org (VuFind catalog, OAI_Repo, Sandhill).
+      - url: https://scholars.msu.edu/
+        status: 200
+        note: Research profiles run on Symplectic Elements; no confirmed open public API.
+      - url: https://www.msu.edu
+        status: 200
+        note: Official university website.
+      - url: https://status.msu.edu
+        status: 0
+        note: Did not resolve; no public status page found.
+      - url: https://api.msu.edu
+        status: 0
+        note: Did not resolve; no central API gateway host.
+      - url: https://developer.msu.edu
+        status: 0
+        note: Did not resolve; no central developer portal host.

@@ -1,0 +1,104 @@
+---
+aid: michigan-state-university
+name: Michigan State University
+description: >-
+  Michigan State University (MSU) is a public land-grant research university in East Lansing,
+  Michigan, United States, ranked #89 in the QS World University Rankings 2025. Like most
+  large research institutions, MSU does not operate a single consolidated public developer
+  portal; its confirmed public API footprint is concentrated in the MSU Libraries platforms,
+  which expose a VuFind REST API (OpenAPI 3.0) for the library catalog and OAI-PMH 2.0
+  endpoints for the catalog and the digital repository. Identity is provided through a
+  Shibboleth/SAML Identity Provider with OAuth 2.0 support, and MSU maintains official GitHub
+  organizations for the university and for MSU Libraries. Most administrative, student, and
+  research-profile interfaces are gated behind institutional affiliation rather than offered
+  as open self-service APIs.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/michigan-state-university/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Library
+  - Open Data
+  - Metadata
+  - United States
+  - Michigan
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: michigan-state-university:catalog-rest
+    name: MSU Libraries Catalog REST API (VuFind)
+    description: >-
+      VuFind REST API (OpenAPI 3.0.3, VuFind v11.0.4) for the MSU Libraries catalog, providing
+      programmatic search of and access to records in the discovery search index.
+    humanURL: https://catalog.lib.msu.edu/api/v1
+    baseURL: https://catalog.lib.msu.edu/api/v1
+    tags: [ Library, Catalog, Search, VuFind, Discovery ]
+    properties:
+      - type: Documentation
+        url: https://catalog.lib.msu.edu/api/v1
+      - type: OpenAPI
+        url: https://catalog.lib.msu.edu/api/v1/?swagger
+  - aid: michigan-state-university:catalog-oai
+    name: MSU Libraries Catalog OAI-PMH
+    description: >-
+      OAI-PMH 2.0 metadata harvesting endpoint for the "Michigan State University Libraries
+      Catalog" repository, exposing bibliographic metadata for harvesting.
+    humanURL: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+    baseURL: https://catalog.lib.msu.edu/OAI/Server
+    tags: [ Library, Metadata, OAI-PMH, Harvesting ]
+    properties:
+      - type: Documentation
+        url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+  - aid: michigan-state-university:dlib-oai
+    name: MSU Libraries Digital Repository OAI-PMH
+    description: >-
+      OAI-PMH 2.0 metadata harvesting endpoint for the "MSU Libraries Digital Repository"
+      (d.lib.msu.edu), exposing descriptive metadata for digital collections.
+    humanURL: https://d.lib.msu.edu/oai?verb=Identify
+    baseURL: https://d.lib.msu.edu/oai
+    tags: [ Library, Repository, Metadata, OAI-PMH, Digital Collections ]
+    properties:
+      - type: Documentation
+        url: https://d.lib.msu.edu/oai?verb=Identify
+  - aid: michigan-state-university:idp
+    name: MSU Identity Provider (Shibboleth / SAML / OAuth 2.0)
+    description: >-
+      MSU's federated single sign-on service. The Shibboleth Identity Provider issues SAML 2.0
+      assertions and the institution also supports OAuth 2.0 for application authentication and
+      authorization. Access requires registered service-provider/application integration and
+      institutional affiliation rather than open self-service.
+    humanURL: https://tech.msu.edu/network/authentication-authorization/
+    baseURL: https://idp.idm.msu.edu/idp/shibboleth
+    tags: [ Identity, Authentication, SSO, Shibboleth, SAML, OAuth ]
+    properties:
+      - type: Documentation
+        url: https://tech.msu.edu/network/authentication-authorization/
+common:
+  - type: Website
+    url: https://www.msu.edu
+  - type: GitHub
+    url: https://github.com/Michigan-State-University
+  - type: SourceCode
+    url: https://github.com/MSU-Libraries
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/michigan-state-university/
+  - type: DeveloperPortal
+    url: https://tech.msu.edu/network/authentication-authorization/
+  - type: Authentication
+    url: https://idp.idm.msu.edu/idp/shibboleth
+  - type: Plans
+    url: plans/michigan-state-university-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/michigan-state-university-rate-limits.yml
+  - type: FinOps
+    url: finops/michigan-state-university-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
