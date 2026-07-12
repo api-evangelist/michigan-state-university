@@ -97,6 +97,8 @@ apis:
       - type: Documentation
         url: https://tech.msu.edu/network/authentication-authorization/
 common:
+  - type: DomainSecurity
+    url: security/michigan-state-university-domain-security.yml
   - type: Website
     url: https://www.msu.edu
   - type: GitHub
@@ -117,6 +119,8 @@ common:
     url: finops/michigan-state-university-finops.yml
   - type: Review
     url: review.yml
+  - url: https://msutoday.msu.edu/rss
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
