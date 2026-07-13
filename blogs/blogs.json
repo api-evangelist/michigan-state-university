@@ -1,0 +1,14 @@
+{
+  "repo": "michigan-state-university",
+  "feeds": [
+    {
+      "source": "https://msutoday.msu.edu/rss",
+      "feed_url": "https://msutoday.msu.edu/rss",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 49
+}
