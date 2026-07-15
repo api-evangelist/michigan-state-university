@@ -97,6 +97,8 @@ apis:
       - type: Documentation
         url: https://tech.msu.edu/network/authentication-authorization/
 common:
+  - type: AgenticAccess
+    url: agentic-access/michigan-state-university-agentic-access.yml
   - type: DomainSecurity
     url: security/michigan-state-university-domain-security.yml
   - type: Website
