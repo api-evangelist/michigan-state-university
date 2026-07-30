@@ -13,9 +13,21 @@ description: >-
   research-profile interfaces are gated behind institutional affiliation rather than offered
   as open self-service APIs.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/michigan-state-university.png
 url: https://raw.githubusercontent.com/api-evangelist/michigan-state-university/refs/heads/main/apis.yml
 tags:
   - Education
@@ -30,72 +42,112 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: michigan-state-university:catalog-rest
-    name: MSU Libraries Catalog REST API (VuFind)
-    description: >-
-      VuFind REST API (OpenAPI 3.0.3, VuFind v11.0.4) for the MSU Libraries catalog, providing
-      programmatic search of and access to records in the discovery search index.
-    humanURL: https://catalog.lib.msu.edu/api/v1
-    baseURL: https://catalog.lib.msu.edu/api/v1
-    tags: [ Library, Catalog, Search, VuFind, Discovery ]
-    properties:
-      - type: Documentation
-        url: https://catalog.lib.msu.edu/api/v1
-      - type: OpenAPI
-        url: https://catalog.lib.msu.edu/api/v1/?swagger
-      - type: OpenAPI
-        url: openapi/michigan-state-university-catalog-rest.yaml
-      - type: x-json-schema
-        url: json-schema/michigan-state-university-record-schema.json
-      - type: x-json-schema
-        url: json-schema/michigan-state-university-searchresponse-schema.json
-      - type: x-json-structure
-        url: json-structure/michigan-state-university-record-structure.json
-      - type: x-example
-        url: examples/michigan-state-university-search-example.json
-      - type: x-example
-        url: examples/michigan-state-university-record-example.json
-      - type: x-spectral-rules
-        url: rules/michigan-state-university-rules.yml
-      - type: x-vocabulary
-        url: vocabulary/michigan-state-university-vocabulary.yml
-      - type: x-json-ld-context
-        url: json-ld/michigan-state-university-context.jsonld
-  - aid: michigan-state-university:catalog-oai
-    name: MSU Libraries Catalog OAI-PMH
-    description: >-
-      OAI-PMH 2.0 metadata harvesting endpoint for the "Michigan State University Libraries
-      Catalog" repository, exposing bibliographic metadata for harvesting.
-    humanURL: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
-    baseURL: https://catalog.lib.msu.edu/OAI/Server
-    tags: [ Library, Metadata, OAI-PMH, Harvesting ]
-    properties:
-      - type: Documentation
-        url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
-  - aid: michigan-state-university:dlib-oai
-    name: MSU Libraries Digital Repository OAI-PMH
-    description: >-
-      OAI-PMH 2.0 metadata harvesting endpoint for the "MSU Libraries Digital Repository"
-      (d.lib.msu.edu), exposing descriptive metadata for digital collections.
-    humanURL: https://d.lib.msu.edu/oai?verb=Identify
-    baseURL: https://d.lib.msu.edu/oai
-    tags: [ Library, Repository, Metadata, OAI-PMH, Digital Collections ]
-    properties:
-      - type: Documentation
-        url: https://d.lib.msu.edu/oai?verb=Identify
-  - aid: michigan-state-university:idp
-    name: MSU Identity Provider (Shibboleth / SAML / OAuth 2.0)
-    description: >-
-      MSU's federated single sign-on service. The Shibboleth Identity Provider issues SAML 2.0
-      assertions and the institution also supports OAuth 2.0 for application authentication and
-      authorization. Access requires registered service-provider/application integration and
-      institutional affiliation rather than open self-service.
-    humanURL: https://tech.msu.edu/network/authentication-authorization/
-    baseURL: https://idp.idm.msu.edu/idp/shibboleth
-    tags: [ Identity, Authentication, SSO, Shibboleth, SAML, OAuth ]
-    properties:
-      - type: Documentation
-        url: https://tech.msu.edu/network/authentication-authorization/
+- aid: michigan-state-university:catalog-oai
+  name: MSU Libraries Catalog OAI-PMH
+  description: >-
+    OAI-PMH 2.0 metadata harvesting endpoint for the "Michigan State University Libraries Catalog" repository,
+    exposing bibliographic metadata for harvesting.
+  humanURL: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+  baseURL: https://catalog.lib.msu.edu/OAI/Server
+  tags:
+  - Library
+  - Metadata
+  - OAI-PMH
+  - Harvesting
+  properties:
+  - type: Documentation
+    url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+- aid: michigan-state-university:dlib-oai
+  name: MSU Libraries Digital Repository OAI-PMH
+  description: >-
+    OAI-PMH 2.0 metadata harvesting endpoint for the "MSU Libraries Digital Repository" (d.lib.msu.edu),
+    exposing descriptive metadata for digital collections.
+  humanURL: https://d.lib.msu.edu/oai?verb=Identify
+  baseURL: https://d.lib.msu.edu/oai
+  tags:
+  - Library
+  - Repository
+  - Metadata
+  - OAI-PMH
+  - Digital Collections
+  properties:
+  - type: Documentation
+    url: https://d.lib.msu.edu/oai?verb=Identify
+- aid: michigan-state-university:idp
+  name: MSU Identity Provider (Shibboleth / SAML / OAuth 2.0)
+  description: >-
+    MSU's federated single sign-on service. The Shibboleth Identity Provider issues SAML 2.0 assertions
+    and the institution also supports OAuth 2.0 for application authentication and authorization. Access
+    requires registered service-provider/application integration and institutional affiliation rather
+    than open self-service.
+  humanURL: https://tech.msu.edu/network/authentication-authorization/
+  baseURL: https://idp.idm.msu.edu/idp/shibboleth
+  tags:
+  - Identity
+  - Authentication
+  - SSO
+  - Shibboleth
+  - SAML
+  - OAuth
+  properties:
+  - type: Documentation
+    url: https://tech.msu.edu/network/authentication-authorization/
+- aid: michigan-state-university:michigan-state-university-record-api
+  name: Michigan State University Record API
+  description: The Record API from Michigan State University — 3 operation(s) for record.
+  humanURL: https://catalog.lib.msu.edu/api/v1
+  baseURL: https://catalog.lib.msu.edu/api/v1
+  tags:
+  - Record
+  properties:
+  - type: OpenAPI
+    url: openapi/michigan-state-university-record-api-openapi.yml
+  - type: Documentation
+    url: https://catalog.lib.msu.edu/api/v1
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-record-schema.json
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-searchresponse-schema.json
+  - type: x-json-structure
+    url: json-structure/michigan-state-university-record-structure.json
+  - type: x-example
+    url: examples/michigan-state-university-search-example.json
+  - type: x-example
+    url: examples/michigan-state-university-record-example.json
+  - type: x-spectral-rules
+    url: rules/michigan-state-university-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/michigan-state-university-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/michigan-state-university-context.jsonld
+- aid: michigan-state-university:michigan-state-university-search-api
+  name: Michigan State University Search API
+  description: The Search API from Michigan State University — 3 operation(s) for search.
+  humanURL: https://catalog.lib.msu.edu/api/v1
+  baseURL: https://catalog.lib.msu.edu/api/v1
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/michigan-state-university-search-api-openapi.yml
+  - type: Documentation
+    url: https://catalog.lib.msu.edu/api/v1
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-record-schema.json
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-searchresponse-schema.json
+  - type: x-json-structure
+    url: json-structure/michigan-state-university-record-structure.json
+  - type: x-example
+    url: examples/michigan-state-university-search-example.json
+  - type: x-example
+    url: examples/michigan-state-university-record-example.json
+  - type: x-spectral-rules
+    url: rules/michigan-state-university-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/michigan-state-university-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/michigan-state-university-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/michigan-state-university-agentic-access.yml
