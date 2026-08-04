@@ -1,0 +1,16 @@
+{
+  "provider": "michigan-state-university",
+  "sources": [
+    "michigan-state-university-record-api-openapi.yml",
+    "michigan-state-university-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "michigan-state-university-record-api-openapi.yml",
+    "michigan-state-university-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
