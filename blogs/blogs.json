@@ -5,10 +5,11 @@
       "source": "https://msutoday.msu.edu/rss",
       "feed_url": "https://msutoday.msu.edu/rss",
       "title": "",
-      "saved": 1,
-      "method": "feed"
+      "saved": 0,
+      "method": "feed",
+      "error": "fetch_failed: HTTPError"
     }
   ],
-  "fetched": "2026-08-06T14:08:46Z",
+  "fetched": "2026-08-15T12:11:08Z",
   "post_count": 110
 }
