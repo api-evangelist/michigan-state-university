@@ -1,0 +1,1076 @@
+{
+  "item": [
+    {
+      "id": "b6d2447e-3e64-42ad-b049-2fb1ef1e6568",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe66d146-c0cc-4965-95ea-a9bfceb32e3f",
+          "name": "Search primary index",
+          "request": {
+            "name": "Search primary index",
+            "description": {
+              "content": "Search primary index with given terms and filters. POST method may also be used if sending a long request.\n\nThe URL syntax here is the same as the one used in VuFind® user interface. It is possible to make a search in VuFind® and copy the query parameters here to make the same search via the API. While this formal specification only describes basic searching, advanced searches like join=AND&lookfor0[]=apples&type0[]=Title&lookfor0[]=oranges&type0[]=Subject&bool0[]=AND are also supported by the endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lookfor",
+                  "value": "<string>",
+                  "description": "Search terms. May be a single term, multiple words or a complex query containing boolean operators (AND, OR, NOT), quotes etc. Terms may also be prefixed with a field name (e.g. author:smith) to target only that field (see also type parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "AllFields",
+                  "description": "Search type. The following search types are available:\n- AllFields\n- Title\n- JournalTitle\n- NewspaperTitle\n- Author\n- Subject\n- CallNumber\n- ISN\n- Publisher\n- oclc_num\n- Series\n- Genre"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- uuid\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- uuid\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facet[]",
+                  "value": "<string>",
+                  "description": "Fields to facet on. Repeat for every field. "
+                },
+                {
+                  "disabled": false,
+                  "key": "facet[]",
+                  "value": "<string>",
+                  "description": "Fields to facet on. Repeat for every field. "
+                },
+                {
+                  "disabled": false,
+                  "key": "facetFilter[]",
+                  "value": "<string>",
+                  "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facetFilter[]",
+                  "value": "<string>",
+                  "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "relevance",
+                  "description": "Sort method."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Record page (first page is 1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Records to return per page. Set to 0 to return no records."
+                },
+                {
+                  "disabled": false,
+                  "key": "resumptionToken",
+                  "value": "<string>",
+                  "description": "A large result set can only be downloaded in batches. You can initiate a batch download by setting resumptionToken to a single asterisk `*`. Each batch will then return a resumptionToken value to use for the next batch until no more results are available (note that the last result set can be empty). Other parameters are ignored when resumptionToken is set to any other value than `*`. The following parameters are not available with resumptionToken: limit, page, facet[]."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "false",
+                  "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Language for returned translated strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "A callback that can be used for JSONP."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd65d2f8-da5c-41ef-a952-e89d01b4471a",
+              "name": "Response containing result count, records and/or facets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "AllFields"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 2129,\n  \"status\": \"OK\",\n  \"records\": [\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_3\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_3\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_4\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"Unknown\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 869,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"uuid\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": true,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"occupation\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ],\n      \"bibnum\": \"string\"\n    },\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"SerialPart\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 4963,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"uuid\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": false,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"topic\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"occupation\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ],\n      \"bibnum\": \"string\"\n    }\n  ],\n  \"facets\": [\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 9465,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    },\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 9393,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    }\n  ],\n  \"resumptionToken\": {\n    \"token\": \"string\",\n    \"expires\": \"1993-06-29T19:07:57.743Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cae3d622-a5a2-4161-a92a-adb0e60448ba",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "AllFields"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"statusMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d06732e-0672-4d4e-b43e-7ac5d052c07f",
+          "name": "Search secondary index",
+          "request": {
+            "name": "Search secondary index",
+            "description": {
+              "content": "Search secondary index with given terms and filters. POST method may also be used if sending a long request.\n\nThe URL syntax here is the same as the one used in VuFind® user interface. It is possible to make a search in VuFind® and copy the query parameters here to make the same search via the API. While this formal specification only describes basic searching, advanced searches like join=AND&lookfor0[]=apples&type0[]=Title&lookfor0[]=oranges&type0[]=Subject&bool0[]=AND are also supported by the endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "index2",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lookfor",
+                  "value": "<string>",
+                  "description": "Search terms. May be a single term, multiple words or a complex query containing boolean operators (AND, OR, NOT), quotes etc. Terms may also be prefixed with a field name (e.g. author:smith) to target only that field (see also type parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "AllFields",
+                  "description": "Search type. The following search types are available:\n- AllFields\n- Title\n- Author\n- Subject\n- CallNumber\n- ISN"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facet[]",
+                  "value": "<string>",
+                  "description": "Fields to facet on. Repeat for every field. "
+                },
+                {
+                  "disabled": false,
+                  "key": "facet[]",
+                  "value": "<string>",
+                  "description": "Fields to facet on. Repeat for every field. "
+                },
+                {
+                  "disabled": false,
+                  "key": "facetFilter[]",
+                  "value": "<string>",
+                  "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facetFilter[]",
+                  "value": "<string>",
+                  "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "relevance",
+                  "description": "Sort method."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Record page (first page is 1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Records to return per page. Set to 0 to return no records."
+                },
+                {
+                  "disabled": false,
+                  "key": "resumptionToken",
+                  "value": "<string>",
+                  "description": "A large result set can only be downloaded in batches. You can initiate a batch download by setting resumptionToken to a single asterisk `*`. Each batch will then return a resumptionToken value to use for the next batch until no more results are available (note that the last result set can be empty). Other parameters are ignored when resumptionToken is set to any other value than `*`. The following parameters are not available with resumptionToken: limit, page, facet[]."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "false",
+                  "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Language for returned translated strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "A callback that can be used for JSONP."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2101edc-7a5c-4c7d-8726-17a4d5cd93b7",
+              "name": "Response containing result count, records and/or facets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "index2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "AllFields"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 5895,\n  \"status\": \"OK\",\n  \"records\": [\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"MonographPart\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 6110,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": false,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"occupation\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ]\n    },\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"Monograph\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 5894,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": false,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"topic\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"meeting name\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"facets\": [\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 9206,\n      \"href\": \"string\",\n      \"isApplied\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    },\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 982,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    }\n  ],\n  \"resumptionToken\": {\n    \"token\": \"string\",\n    \"expires\": \"2008-02-11T16:54:57.754Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e12b092-3f20-471e-ab72-48712c5300c4",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "index2",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "AllFields"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"statusMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8d9cbbb-6fa0-4433-9eaf-d39c41731188",
+          "name": "Search website index",
+          "request": {
+            "name": "Search website index",
+            "description": {
+              "content": "Search website index with given terms and filters. POST method may also be used if sending a long request.\n\nThe URL syntax here is the same as the one used in VuFind® user interface. It is possible to make a search in VuFind® and copy the query parameters here to make the same search via the API. While this formal specification only describes basic searching, advanced searches like join=AND&lookfor0[]=apples&type0[]=Title&lookfor0[]=oranges&type0[]=Subject&bool0[]=AND are also supported by the endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lookfor",
+                  "value": "<string>",
+                  "description": "Search terms. May be a single term, multiple words or a complex query containing boolean operators (AND, OR, NOT), quotes etc. Terms may also be prefixed with a field name (e.g. author:smith) to target only that field (see also type parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "AllFields",
+                  "description": "Search type. The following search types are available:\n- AllFields"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- id\n- lastModified\n- title\n- url"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- id\n- lastModified\n- title\n- url"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[]",
+                  "value": "<string>",
+                  "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facet[]",
+                  "value": "<string>",
+                  "description": "Fields to facet on. Repeat for every field. "
+                },
+                {
+                  "disabled": false,
+                  "key": "facet[]",
+                  "value": "<string>",
+                  "description": "Fields to facet on. Repeat for every field. "
+                },
+                {
+                  "disabled": false,
+                  "key": "facetFilter[]",
+                  "value": "<string>",
+                  "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facetFilter[]",
+                  "value": "<string>",
+                  "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "relevance",
+                  "description": "Sort method."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Record page (first page is 1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Records to return per page. Set to 0 to return no records."
+                },
+                {
+                  "disabled": false,
+                  "key": "resumptionToken",
+                  "value": "<string>",
+                  "description": "A large result set can only be downloaded in batches. You can initiate a batch download by setting resumptionToken to a single asterisk `*`. Each batch will then return a resumptionToken value to use for the next batch until no more results are available (note that the last result set can be empty). Other parameters are ignored when resumptionToken is set to any other value than `*`. The following parameters are not available with resumptionToken: limit, page, facet[]."
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "false",
+                  "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Language for returned translated strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "A callback that can be used for JSONP."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62a6fe0e-5242-410f-b90f-6264c5f30159",
+              "name": "Response containing result count, records and/or facets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "AllFields"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 3152,\n  \"status\": \"OK\",\n  \"records\": [\n    {\n      \"id\": \"string\",\n      \"lastModified\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"lastModified\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"facets\": [\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 9770,\n      \"href\": \"string\",\n      \"isApplied\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    },\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 6009,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    }\n  ],\n  \"resumptionToken\": {\n    \"token\": \"string\",\n    \"expires\": \"1983-01-21T01:31:25.338Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2463b5df-cb08-471e-a431-c98bd77798c3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lookfor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "AllFields"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facet[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facetFilter[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "resumptionToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"statusMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://catalog.lib.msu.edu/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "958658e4-5d40-430b-a9c2-a16e22cd632a",
+    "name": "Library Catalog Record Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The REST API provides access to search functions and records contained in the search index.",
+      "type": "text/plain"
+    }
+  }
+}

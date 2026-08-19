@@ -1,0 +1,698 @@
+{
+  "item": [
+    {
+      "id": "30d66c71-d079-4eee-b3ed-710ebd73b209",
+      "name": "Record",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd445b48-da59-4d85-9a2c-03f12d90ff83",
+          "name": "Fetch records from primary index",
+          "request": {
+            "name": "Fetch records from primary index",
+            "description": {
+              "content": "Return a single record or multiple records from primary index. POST method may also be used if sending a long request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "A single record ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "id[]",
+                  "value": "<string>",
+                  "description": "Multiple record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "id[]",
+                  "value": "<string>",
+                  "description": "Multiple record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- uuid\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- uuid\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "false",
+                  "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Language for returned translated strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "A callback that can be used for JSONP."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "705274b2-0559-4aae-b2d0-05da4f52393a",
+              "name": "Response containing result count and records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 3055,\n  \"status\": \"OK\",\n  \"records\": [\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_3\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"CollectionPart\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 1538,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"uuid\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": true,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"personal name\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"uniform title\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ],\n      \"bibnum\": \"string\"\n    },\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"Monograph\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 2466,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"uuid\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": false,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"uniform title\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"meeting name\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ],\n      \"bibnum\": \"string\"\n    }\n  ],\n  \"facets\": [\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 1971,\n      \"href\": \"string\",\n      \"isApplied\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    },\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 6887,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    }\n  ],\n  \"resumptionToken\": {\n    \"token\": \"string\",\n    \"expires\": \"1960-01-18T06:20:41.551Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f690696-5fa1-4d7a-8ffa-241459bc71f1",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"statusMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd6d9f71-d01e-4145-a21c-2136520daa5c",
+          "name": "Fetch records from secondary index",
+          "request": {
+            "name": "Fetch records from secondary index",
+            "description": {
+              "content": "Return a single record or multiple records from secondary index. POST method may also be used if sending a long request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "index2",
+                "record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "A single record ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "id[]",
+                  "value": "<string>",
+                  "description": "Multiple record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "id[]",
+                  "value": "<string>",
+                  "description": "Multiple record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- languages\n- series\n- subjects\n- title\n- urls"
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "false",
+                  "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Language for returned translated strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "A callback that can be used for JSONP."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eafd3be0-0a34-465c-8dd0-31b58aa2a83a",
+              "name": "Response containing result count and records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "index2",
+                    "record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 7567,\n  \"status\": \"OK\",\n  \"records\": [\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"SerialPart\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 9789,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": true,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"chronological\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"personal name\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ]\n    },\n    {\n      \"accessRestrictions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authors\": {\n        \"primary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"secondary\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        \"corporate\": {\n          \"key_0\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"Author name\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"awards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"bibliographicLevel\": \"Serial\",\n      \"bibliographyNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"buildings\": [\n        \"string\",\n        \"string\"\n      ],\n      \"callNumbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"childRecordCount\": 3123,\n      \"cleanDoi\": \"string\",\n      \"cleanIsbn\": \"string\",\n      \"cleanIssn\": \"string\",\n      \"cleanOclcNumber\": \"string\",\n      \"containerEndPage\": \"string\",\n      \"containerIssue\": \"string\",\n      \"containerReference\": \"string\",\n      \"containerStartPage\": \"string\",\n      \"containerTitle\": \"string\",\n      \"containerVolume\": \"string\",\n      \"corporateAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dedupIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"edition\": \"string\",\n      \"findingAids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"formats\": [\n        \"string\",\n        \"string\"\n      ],\n      \"fullRecord\": \"string\",\n      \"generalNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"geoLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchicalPlaceNames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyParentTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopId\": [\n        \"string\",\n        \"string\"\n      ],\n      \"hierarchyTopTitle\": [\n        \"string\",\n        \"string\"\n      ],\n      \"humanReadablePublicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"id\": \"string\",\n      \"institutions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isbns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"isCollection\": true,\n      \"issns\": [\n        \"string\",\n        \"string\"\n      ],\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lccn\": [\n        \"string\",\n        \"string\"\n      ],\n      \"newerTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"oclc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"openUrl\": \"string\",\n      \"physicalDescriptions\": [\n        \"string\",\n        \"string\"\n      ],\n      \"placesOfPublication\": [\n        \"string\",\n        \"string\"\n      ],\n      \"playingTimes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousTitles\": [\n        \"string\",\n        \"string\"\n      ],\n      \"primaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productionCredits\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publicationDates\": [\n        \"string\",\n        \"string\"\n      ],\n      \"publishers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"rawData\": \"string\",\n      \"recordLinks\": [\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"title\": \"string\",\n          \"value\": \"string\",\n          \"link\": {\n            \"type\": \"string\",\n            \"value\": \"string\",\n            \"exclude\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"recordPage\": \"string\",\n      \"relationshipNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"secondaryAuthors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"series\": [\n        \"string\",\n        \"string\"\n      ],\n      \"shortTitle\": \"string\",\n      \"subjects\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"subjectsExtended\": [\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"uniform title\",\n          \"source\": \"string\"\n        },\n        {\n          \"heading\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"chronological\",\n          \"source\": \"string\"\n        }\n      ],\n      \"subTitle\": \"string\",\n      \"summary\": [\n        \"string\",\n        \"string\"\n      ],\n      \"systemDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"targetAudienceNotes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"title\": \"string\",\n      \"titleSection\": \"string\",\n      \"titleStatement\": \"string\",\n      \"toc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"urls\": [\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        },\n        {\n          \"url\": \"string\",\n          \"desc\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"facets\": [\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 8493,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    },\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 8783,\n      \"href\": \"string\",\n      \"isApplied\": false,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    }\n  ],\n  \"resumptionToken\": {\n    \"token\": \"string\",\n    \"expires\": \"2009-02-04T10:24:32.436Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2457170f-d3d3-4899-a36a-7328fee96e76",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "index2",
+                    "record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"statusMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "928975eb-4373-47b0-9225-c0ba566ea656",
+          "name": "Fetch records from website index",
+          "request": {
+            "name": "Fetch records from website index",
+            "description": {
+              "content": "Return a single record or multiple records from website index. POST method may also be used if sending a long request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "web",
+                "record"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "A single record ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "id[]",
+                  "value": "<string>",
+                  "description": "Multiple record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "id[]",
+                  "value": "<string>",
+                  "description": "Multiple record IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- id\n- lastModified\n- title\n- url"
+                },
+                {
+                  "disabled": false,
+                  "key": "field[]",
+                  "value": "<string>",
+                  "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- id\n- lastModified\n- title\n- url"
+                },
+                {
+                  "disabled": false,
+                  "key": "prettyPrint",
+                  "value": "false",
+                  "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "lng",
+                  "value": "en",
+                  "description": "Language for returned translated strings."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "A callback that can be used for JSONP."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d314ee4-41c0-4291-b8ea-2f5964d58157",
+              "name": "Response containing result count and records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resultCount\": 8222,\n  \"status\": \"OK\",\n  \"records\": [\n    {\n      \"id\": \"string\",\n      \"lastModified\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"lastModified\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"facets\": [\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 9546,\n      \"href\": \"string\",\n      \"isApplied\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    },\n    {\n      \"value\": \"string\",\n      \"translated\": \"string\",\n      \"count\": 7657,\n      \"href\": \"string\",\n      \"isApplied\": true,\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Facet detected>\"\n        }\n      ]\n    }\n  ],\n  \"resumptionToken\": {\n    \"token\": \"string\",\n    \"expires\": \"2008-05-29T05:22:50.262Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35059cd3-849b-4842-9764-c3a8ca387a8a",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "web",
+                    "record"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "field[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prettyPrint",
+                      "value": "false"
+                    },
+                    {
+                      "key": "lng",
+                      "value": "en"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ERROR\",\n  \"statusMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://catalog.lib.msu.edu/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "37056553-ce6c-4db1-a662-ee3df7b2cc6e",
+    "name": "Library Catalog Record API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The REST API provides access to search functions and records contained in the search index.",
+      "type": "text/plain"
+    }
+  }
+}

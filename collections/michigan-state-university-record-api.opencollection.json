@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Library Catalog Record API",
+    "version": "11.0.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Record",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch records from primary index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://catalog.lib.msu.edu/api/v1/record",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "A single record ID"
+              },
+              {
+                "name": "id[]",
+                "value": "",
+                "type": "query",
+                "description": "Multiple record IDs"
+              },
+              {
+                "name": "field[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- uuid\n- languages\n- series\n- subjects\n- title\n- urls"
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Language for returned translated strings."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "A callback that can be used for JSONP."
+              }
+            ]
+          },
+          "docs": "Return a single record or multiple records from primary index. POST method may also be used if sending a long request."
+        },
+        {
+          "info": {
+            "name": "Fetch records from secondary index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://catalog.lib.msu.edu/api/v1/index2/record",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "A single record ID"
+              },
+              {
+                "name": "id[]",
+                "value": "",
+                "type": "query",
+                "description": "Multiple record IDs"
+              },
+              {
+                "name": "field[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- languages\n- series\n- subjects\n- title\n- urls"
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Language for returned translated strings."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "A callback that can be used for JSONP."
+              }
+            ]
+          },
+          "docs": "Return a single record or multiple records from secondary index. POST method may also be used if sending a long request."
+        },
+        {
+          "info": {
+            "name": "Fetch records from website index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://catalog.lib.msu.edu/api/v1/web/record",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "A single record ID"
+              },
+              {
+                "name": "id[]",
+                "value": "",
+                "type": "query",
+                "description": "Multiple record IDs"
+              },
+              {
+                "name": "field[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- id\n- lastModified\n- title\n- url"
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Language for returned translated strings."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "A callback that can be used for JSONP."
+              }
+            ]
+          },
+          "docs": "Return a single record or multiple records from website index. POST method may also be used if sending a long request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

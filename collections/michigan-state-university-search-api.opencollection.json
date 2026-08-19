@@ -1,0 +1,291 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Library Catalog Record Search API",
+    "version": "11.0.4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search primary index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://catalog.lib.msu.edu/api/v1/search",
+            "params": [
+              {
+                "name": "lookfor",
+                "value": "",
+                "type": "query",
+                "description": "Search terms. May be a single term, multiple words or a complex query containing boolean operators (AND, OR, NOT), quotes etc. Terms may also be prefixed with a field name (e.g. author:smith) to target only that field (see also type parameter)."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Search type. The following search types are available:\n- AllFields\n- Title\n- JournalTitle\n- NewspaperTitle\n- Author\n- Subject\n- CallNumber\n- ISN\n- Publisher\n- oclc_num\n- Series\n- Genre"
+              },
+              {
+                "name": "field[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- uuid\n- languages\n- series\n- subjects\n- title\n- urls"
+              },
+              {
+                "name": "filter[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+              },
+              {
+                "name": "facet[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to facet on. Repeat for every field. "
+              },
+              {
+                "name": "facetFilter[]",
+                "value": "",
+                "type": "query",
+                "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort method."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Record page (first page is 1)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Records to return per page. Set to 0 to return no records."
+              },
+              {
+                "name": "resumptionToken",
+                "value": "",
+                "type": "query",
+                "description": "A large result set can only be downloaded in batches. You can initiate a batch download by setting resumptionToken to a single asterisk `*`. Each batch will then return a resumptionToken value to use for the next batch until no more results are available (note that the last result set can be empty). Other parameters are ignored when resumptionToken is set to any other value than `*`. The following parameters are not available with resumptionToken: limit, page, facet[]."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Language for returned translated strings."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "A callback that can be used for JSONP."
+              }
+            ]
+          },
+          "docs": "Search primary index with given terms and filters. POST method may also be used if sending a long request.\n\nThe URL syntax here is the same as the one used in VuFind® user interface. It is possible to make a search in VuFind® and copy the query parameters here to make the same search via the API. While this formal specification only describes basic searching, advanced searches like join=AND&lookfor0[]=apples&type0[]=Title&lookfor0[]=oranges&type0[]=Subject&bool0[]=AND are also supported by the e"
+        },
+        {
+          "info": {
+            "name": "Search secondary index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://catalog.lib.msu.edu/api/v1/index2/search",
+            "params": [
+              {
+                "name": "lookfor",
+                "value": "",
+                "type": "query",
+                "description": "Search terms. May be a single term, multiple words or a complex query containing boolean operators (AND, OR, NOT), quotes etc. Terms may also be prefixed with a field name (e.g. author:smith) to target only that field (see also type parameter)."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Search type. The following search types are available:\n- AllFields\n- Title\n- Author\n- Subject\n- CallNumber\n- ISN"
+              },
+              {
+                "name": "field[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- authors\n- formats\n- id\n- languages\n- series\n- subjects\n- title\n- urls"
+              },
+              {
+                "name": "filter[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+              },
+              {
+                "name": "facet[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to facet on. Repeat for every field. "
+              },
+              {
+                "name": "facetFilter[]",
+                "value": "",
+                "type": "query",
+                "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort method."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Record page (first page is 1)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Records to return per page. Set to 0 to return no records."
+              },
+              {
+                "name": "resumptionToken",
+                "value": "",
+                "type": "query",
+                "description": "A large result set can only be downloaded in batches. You can initiate a batch download by setting resumptionToken to a single asterisk `*`. Each batch will then return a resumptionToken value to use for the next batch until no more results are available (note that the last result set can be empty). Other parameters are ignored when resumptionToken is set to any other value than `*`. The following parameters are not available with resumptionToken: limit, page, facet[]."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Language for returned translated strings."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "A callback that can be used for JSONP."
+              }
+            ]
+          },
+          "docs": "Search secondary index with given terms and filters. POST method may also be used if sending a long request.\n\nThe URL syntax here is the same as the one used in VuFind® user interface. It is possible to make a search in VuFind® and copy the query parameters here to make the same search via the API. While this formal specification only describes basic searching, advanced searches like join=AND&lookfor0[]=apples&type0[]=Title&lookfor0[]=oranges&type0[]=Subject&bool0[]=AND are also supported by the"
+        },
+        {
+          "info": {
+            "name": "Search website index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://catalog.lib.msu.edu/api/v1/web/search",
+            "params": [
+              {
+                "name": "lookfor",
+                "value": "",
+                "type": "query",
+                "description": "Search terms. May be a single term, multiple words or a complex query containing boolean operators (AND, OR, NOT), quotes etc. Terms may also be prefixed with a field name (e.g. author:smith) to target only that field (see also type parameter)."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Search type. The following search types are available:\n- AllFields"
+              },
+              {
+                "name": "field[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to return. If not specified, a set of default fields is returned.\n\nThe default fields are:\n- id\n- lastModified\n- title\n- url"
+              },
+              {
+                "name": "filter[]",
+                "value": "",
+                "type": "query",
+                "description": "Filter queries. Repeat for every filter.\nThe format for a filter is field:value.\n\n'AND' filtering is used by default. 'OR' or 'NOT' filtering can be used by prepending the field with '~' (OR) or '-' (NOT)."
+              },
+              {
+                "name": "facet[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to facet on. Repeat for every field. "
+              },
+              {
+                "name": "facetFilter[]",
+                "value": "",
+                "type": "query",
+                "description": "Faceting result filters. Contains regular expressions that the facet must match for it to be returned. The result will include the matched facet items and for hierarchical facets any ancestor values.\nFormat for a facet filter is field:regexp, e.g. `author_facet:Sm.*th`.\n\n**N.B.**The filtered facet needs to be present in the list of returned facets (facet[] parameter)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort method."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Record page (first page is 1)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Records to return per page. Set to 0 to return no records."
+              },
+              {
+                "name": "resumptionToken",
+                "value": "",
+                "type": "query",
+                "description": "A large result set can only be downloaded in batches. You can initiate a batch download by setting resumptionToken to a single asterisk `*`. Each batch will then return a resumptionToken value to use for the next batch until no more results are available (note that the last result set can be empty). Other parameters are ignored when resumptionToken is set to any other value than `*`. The following parameters are not available with resumptionToken: limit, page, facet[]."
+              },
+              {
+                "name": "prettyPrint",
+                "value": "",
+                "type": "query",
+                "description": "Whether to pretty-print the response. Useful for observing the results in a browser."
+              },
+              {
+                "name": "lng",
+                "value": "",
+                "type": "query",
+                "description": "Language for returned translated strings."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "A callback that can be used for JSONP."
+              }
+            ]
+          },
+          "docs": "Search website index with given terms and filters. POST method may also be used if sending a long request.\n\nThe URL syntax here is the same as the one used in VuFind® user interface. It is possible to make a search in VuFind® and copy the query parameters here to make the same search via the API. While this formal specification only describes basic searching, advanced searches like join=AND&lookfor0[]=apples&type0[]=Title&lookfor0[]=oranges&type0[]=Subject&bool0[]=AND are also supported by the e"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
