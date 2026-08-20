@@ -88,6 +88,12 @@ apis:
   - SSO
   - Shibboleth
   - SAML
+  tags_raw:
+  - Identity
+  - Authentication
+  - SSO
+  - Shibboleth
+  - SAML
   - OAuth
   properties:
   - type: Documentation
