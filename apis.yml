@@ -167,6 +167,9 @@ apis:
   - type: x-json-ld-context
     url: json-ld/michigan-state-university-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/michigan-state-university-capability-edges.yml
+    name: Michigan State University Business Capability Map
   - type: AgenticAccess
     url: agentic-access/michigan-state-university-agentic-access.yml
   - type: DomainSecurity

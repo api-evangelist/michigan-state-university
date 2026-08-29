@@ -1,0 +1,26 @@
+slug: michigan-state-university
+provider: Michigan State University
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Record
+  spec_file: michigan-state-university-record-api-openapi.yml
+  capability_id: BC-4790.40
+  capability_id_l1: BC-4790
+  capability_name: Library & Information Resource Operations
+  confidence: 0.75
+  evidence: openapi title 'Library Catalog Record API'; 'Fetch records from primary index'; schemas Record,
+    Subject, AuthorWithRoles
+  reason: Operations retrieve bibliographic catalogue records from the university library's discovery
+    index, which is library collection/information resource operations supporting teaching and research.
+    Some risk it is treated as generic search plumbing, hence moderate confidence.
