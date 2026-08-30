@@ -1,42 +1,53 @@
 ---
 aid: michigan-state-university
 name: Michigan State University
+x-type: university
+x-category: Public Research University
 description: >-
-  Michigan State University (MSU) is a public land-grant research university in East Lansing,
-  Michigan, United States, ranked #89 in the QS World University Rankings 2025. Like most
-  large research institutions, MSU does not operate a single consolidated public developer
-  portal; its confirmed public API footprint is concentrated in the MSU Libraries platforms,
-  which expose a VuFind REST API (OpenAPI 3.0) for the library catalog and OAI-PMH 2.0
-  endpoints for the catalog and the digital repository. Identity is provided through a
-  Shibboleth/SAML Identity Provider with OAuth 2.0 support, and MSU maintains official GitHub
-  organizations for the university and for MSU Libraries. Most administrative, student, and
-  research-profile interfaces are gated behind institutional affiliation rather than offered
-  as open self-service APIs.
+  Michigan State University is a public land-grant research university in East Lansing,
+  Michigan, and a founding member of the Big Ten and the AAU. It runs no central developer
+  portal, issues no API keys, and operates no self-service onboarding of any kind, and this
+  profile does not pretend otherwise. What it genuinely operates, on its own msu.edu hosts,
+  is a small set of real machine surfaces run by MSU Libraries and MSU IT: a keyless VuFind
+  11.0.4 REST API for the library discovery index at catalog.lib.msu.edu/api/v1, whose
+  OpenAPI 3.0.3 the university itself publishes live at /api/v1/?swagger; two OAI-PMH 2.0
+  providers, one over the catalog and one over the digital repository at d.lib.msu.edu, the
+  latter running oai_repo — an OAI-PMH server library MSU Libraries wrote themselves and
+  release Apache-2.0 on GitHub, which is real institutional engineering rather than a vendor
+  deployment; and a Shibboleth SAML 2.0 identity provider registered in InCommon as
+  urn:mace:incommon:msu.edu. MSU also publishes an llms.txt and a /.well-known/ai.txt naming
+  three AI content endpoints, though the Imperva edge in front of msu.edu answers every
+  non-browser client with a JavaScript challenge, so those declared endpoints are not
+  actually reachable by the agents they are addressed to. Two vendor platforms are recorded
+  as tenant relationships rather than as MSU contracts: D2L Brightspace (d2l.msu.edu, CNAME
+  msu.brightspace.com) and Academic Analytics (Scholars @ MSU at scholars.msu.edu). Student
+  records, registration, HR and finance are behind institutional SSO and are not public APIs.
 type: Index
 deliveryModel:
   model: saas
   open_source: false
-  commercial: true
+  commercial: false
   callable_host: true
   label: Hosted service · you call their endpoint
   confidence: high
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
-  method: derived
+  generated: '2026-08-30'
+  method: probed
 accessModel:
   pricing: free
-  onboarding: unknown
+  onboarding: none
   trial: false
-  try_now: false
-  public: false
-  label: Free
-  confidence: medium
+  try_now: true
+  public: true
+  label: Free · no key, no registration
+  confidence: high
   source:
+  - probed
   - plans
-  generated: '2026-07-22'
-  method: derived
+  generated: '2026-08-30'
+  method: probed
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/michigan-state-university.png
@@ -45,20 +56,120 @@ tags:
   - Education
   - Higher Education
   - University
-  - Library
-  - Open Data
-  - Metadata
+  - Public Research University
+  - Land Grant University
+  - Big Ten
   - United States
   - Michigan
+  - Library
+  - Library Catalog
+  - Digital Repository
+  - Metadata
+  - OAI-PMH
+  - Identity Federation
+  - Shibboleth
+  - Research Computing
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 specificationVersion: '0.23'
 apis:
+- aid: michigan-state-university:michigan-state-university-record-api
+  name: MSU Libraries Catalog Record API
+  x-operator: institution
+  description: >-
+    Record-retrieval half of the MSU Libraries VuFind 11.0.4 REST API, served from the
+    university's own host at catalog.lib.msu.edu/api/v1. Keyless and read-only: GET /record,
+    /index2/record and /web/record return bibliographic and web records from the discovery
+    index. Verified live on 2026-08-30 — GET /api/v1/search?lookfor=test&limit=1 returned 200
+    with a populated SearchResponse, and GET /api/v1/record with no id returned the modelled
+    400 {"status":"ERROR","statusMessage":"Missing id"}. The contract is VuFind's product
+    contract, but MSU publishes it itself from its own deployment, on its own domain, and
+    MSU Libraries maintains its VuFind customisations publicly at github.com/MSU-Libraries/catalog.
+  humanURL: https://catalog.lib.msu.edu/api/v1/?swagger
+  baseURL: https://catalog.lib.msu.edu/api/v1
+  tags:
+  - Record
+  - Library
+  - Library Catalog
+  - Bibliographic
+  properties:
+  - type: OpenAPI
+    url: openapi/michigan-state-university-record-api-openapi.yml
+  - type: APIReference
+    url: https://catalog.lib.msu.edu/api/v1/?swagger
+  - type: Authentication
+    url: authentication/michigan-state-university-authentication.yml
+  - type: Scopes
+    url: scopes/michigan-state-university-scopes.yml
+  - type: Errors
+    url: errors/michigan-state-university-errors.yml
+  - type: Lifecycle
+    url: lifecycle/michigan-state-university-lifecycle.yml
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-record-schema.json
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-searchresponse-schema.json
+  - type: x-json-structure
+    url: json-structure/michigan-state-university-record-structure.json
+  - type: x-example
+    url: examples/michigan-state-university-record-example.json
+  - type: x-spectral-rules
+    url: rules/michigan-state-university-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/michigan-state-university-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/michigan-state-university-context.jsonld
+- aid: michigan-state-university:michigan-state-university-search-api
+  name: MSU Libraries Catalog Search API
+  x-operator: institution
+  description: >-
+    Search half of the same MSU Libraries VuFind 11.0.4 REST API on catalog.lib.msu.edu/api/v1
+    — GET /search, /index2/search and /web/search return result sets and facets over the
+    library discovery index. Keyless, read-only, no registration. Verified live on 2026-08-30.
+    Same institution-operated deployment as the Record API; the two entries are a per-tag
+    split of one contract, not two separate programmes.
+  humanURL: https://catalog.lib.msu.edu/api/v1/?swagger
+  baseURL: https://catalog.lib.msu.edu/api/v1
+  tags:
+  - Search
+  - Library
+  - Library Catalog
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/michigan-state-university-search-api-openapi.yml
+  - type: APIReference
+    url: https://catalog.lib.msu.edu/api/v1/?swagger
+  - type: Authentication
+    url: authentication/michigan-state-university-authentication.yml
+  - type: Scopes
+    url: scopes/michigan-state-university-scopes.yml
+  - type: Errors
+    url: errors/michigan-state-university-errors.yml
+  - type: Lifecycle
+    url: lifecycle/michigan-state-university-lifecycle.yml
+  - type: x-json-schema
+    url: json-schema/michigan-state-university-searchresponse-schema.json
+  - type: x-json-structure
+    url: json-structure/michigan-state-university-searchresponse-structure.json
+  - type: x-example
+    url: examples/michigan-state-university-search-example.json
+  - type: x-spectral-rules
+    url: rules/michigan-state-university-rules.yml
+  - type: x-vocabulary
+    url: vocabulary/michigan-state-university-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/michigan-state-university-context.jsonld
 - aid: michigan-state-university:catalog-oai
   name: MSU Libraries Catalog OAI-PMH
+  x-operator: institution
   description: >-
-    OAI-PMH 2.0 metadata harvesting endpoint for the "Michigan State University Libraries Catalog" repository,
-    exposing bibliographic metadata for harvesting.
+    OAI-PMH 2.0 metadata harvesting provider over the MSU Libraries catalog, on the
+    university's own host. Verified live on 2026-08-30: verb=Identify returns
+    repositoryName "Michigan State University Libraries Catalog", protocolVersion 2.0,
+    adminEmail LIB.DL.pubcat@msu.edu, earliestDatestamp 2000-01-01; ListMetadataFormats
+    advertises oai_dc and marc21. Unauthenticated. Protocol errors return HTTP 200 with an
+    in-body <error code="badVerb">, which is correct OAI-PMH behaviour, not a defect.
   humanURL: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
   baseURL: https://catalog.lib.msu.edu/OAI/Server
   tags:
@@ -69,123 +180,171 @@ apis:
   properties:
   - type: Documentation
     url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+  - type: Conformance
+    url: conformance/michigan-state-university-conformance.yml
+  - type: Errors
+    url: errors/michigan-state-university-errors.yml
 - aid: michigan-state-university:dlib-oai
   name: MSU Libraries Digital Repository OAI-PMH
+  x-operator: institution
   description: >-
-    OAI-PMH 2.0 metadata harvesting endpoint for the "MSU Libraries Digital Repository" (d.lib.msu.edu),
-    exposing descriptive metadata for digital collections.
+    OAI-PMH 2.0 provider over the MSU Libraries Digital Repository at d.lib.msu.edu.
+    Verified live on 2026-08-30: verb=Identify returns repositoryName "MSU Libraries Digital
+    Repository", repositoryIdentifier d.lib.msu.edu, adminEmail LIB.DL.repoteam@msu.edu,
+    earliestDatestamp 1588-01-01; ListMetadataFormats advertises oai_dc, mods (mods-3-4) and
+    marcxml. This is the surface most worth crediting to MSU rather than to a platform: it is
+    served by oai_repo, the OAI-PMH server library MSU Libraries authored and publish
+    Apache-2.0 at github.com/MSU-Libraries/oai_repo and on PyPI. The repository is MSU's own,
+    the software is MSU's own, and no vendor contract is involved.
   humanURL: https://d.lib.msu.edu/oai?verb=Identify
   baseURL: https://d.lib.msu.edu/oai
   tags:
   - Library
-  - Repository
+  - Digital Repository
   - Metadata
   - OAI-PMH
+  - Harvesting
   - Digital Collections
   properties:
   - type: Documentation
     url: https://d.lib.msu.edu/oai?verb=Identify
+  - type: SourceCode
+    url: https://github.com/MSU-Libraries/oai_repo
+  - type: Conformance
+    url: conformance/michigan-state-university-conformance.yml
+  - type: Errors
+    url: errors/michigan-state-university-errors.yml
 - aid: michigan-state-university:idp
-  name: MSU Identity Provider (Shibboleth / SAML / OAuth 2.0)
+  name: MSU Identity Provider (Shibboleth / SAML 2.0)
+  x-operator: institution
   description: >-
-    MSU's federated single sign-on service. The Shibboleth Identity Provider issues SAML 2.0 assertions
-    and the institution also supports OAuth 2.0 for application authentication and authorization. Access
-    requires registered service-provider/application integration and institutional affiliation rather
-    than open self-service.
-  humanURL: https://tech.msu.edu/network/authentication-authorization/
+    MSU's federated single sign-on. The Shibboleth Identity Provider publishes SAML 2.0
+    metadata unauthenticated at idp.idm.msu.edu/idp/shibboleth — verified live on 2026-08-30,
+    returning an md:EntityDescriptor with entityID urn:mace:incommon:msu.edu and an
+    IDPSSODescriptor supporting urn:oasis:names:tc:SAML:2.0:protocol. This is
+    institution-operated by definition and is a genuinely machine-readable surface, but it is
+    not an onboardable API: obtaining assertions requires a registered service provider in
+    InCommon plus an MSU NetID, i.e. institutional affiliation rather than a developer credential.
+  humanURL: https://idp.idm.msu.edu/idp/shibboleth
   baseURL: https://idp.idm.msu.edu/idp/shibboleth
   tags:
   - Identity
+  - Identity Federation
   - Authentication
   - SSO
   - Shibboleth
   - SAML
-  tags_raw:
-  - Identity
-  - Authentication
-  - SSO
-  - Shibboleth
-  - SAML
-  - OAuth
+  - InCommon
   properties:
   - type: Documentation
-    url: https://tech.msu.edu/network/authentication-authorization/
-- aid: michigan-state-university:michigan-state-university-record-api
-  name: Michigan State University Record API
-  description: The Record API from Michigan State University — 3 operation(s) for record.
-  humanURL: https://catalog.lib.msu.edu/api/v1
-  baseURL: https://catalog.lib.msu.edu/api/v1
+    url: https://idp.idm.msu.edu/idp/shibboleth
+  - type: Authentication
+    url: authentication/michigan-state-university-authentication.yml
+  - type: Conformance
+    url: conformance/michigan-state-university-conformance.yml
+- aid: michigan-state-university:brightspace-lms
+  name: D2L Brightspace at MSU (tenant)
+  x-operator: tenant
+  description: >-
+    MSU's learning management system is D2L Brightspace, running as an MSU-branded tenant at
+    d2l.msu.edu, which CNAMEs to msu.brightspace.com — confirmed by DNS on 2026-08-30, with
+    the login page titled "Homepage - Michigan State University". The tenancy is a real
+    institutional fact and the course, enrolment and LTI data inside it are MSU's. The API
+    contract, its LTI conformance and its versioning are D2L's, shared by every Brightspace
+    customer, and are deliberately NOT saved into this repository. Access is
+    affiliation-gated; no public API surface is exposed at this host.
+  humanURL: https://d2l.msu.edu/
+  baseURL: https://msu.brightspace.com
   tags:
-  - Record
+  - Learning Management System
+  - LMS
+  - Tenant
+  - Brightspace
   properties:
-  - type: OpenAPI
-    url: openapi/michigan-state-university-record-api-openapi.yml
   - type: Documentation
-    url: https://catalog.lib.msu.edu/api/v1
-  - type: x-json-schema
-    url: json-schema/michigan-state-university-record-schema.json
-  - type: x-json-schema
-    url: json-schema/michigan-state-university-searchresponse-schema.json
-  - type: x-json-structure
-    url: json-structure/michigan-state-university-record-structure.json
-  - type: x-example
-    url: examples/michigan-state-university-search-example.json
-  - type: x-example
-    url: examples/michigan-state-university-record-example.json
-  - type: x-spectral-rules
-    url: rules/michigan-state-university-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/michigan-state-university-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/michigan-state-university-context.jsonld
-- aid: michigan-state-university:michigan-state-university-search-api
-  name: Michigan State University Search API
-  description: The Search API from Michigan State University — 3 operation(s) for search.
-  humanURL: https://catalog.lib.msu.edu/api/v1
-  baseURL: https://catalog.lib.msu.edu/api/v1
+    url: https://d2l.msu.edu/
+  x-vendor:
+    name: D2L
+    platform: Brightspace
+    generic_host: brightspace.com
+    evidence: DNS CNAME d2l.msu.edu -> msu.brightspace.com (2026-08-30)
+- aid: michigan-state-university:scholars-msu
+  name: Scholars @ MSU (Academic Analytics tenant)
+  x-operator: tenant
+  description: >-
+    MSU's public research-expertise portal at scholars.msu.edu. The host is MSU-branded, but
+    the application is an Angular single-page client whose compiled bundle
+    (main-VSM345O5.js, fetched 2026-08-30) calls only academicanalytics.com and
+    insight.discovery.academicanalytics.com — the platform is Academic Analytics' Discovery
+    product, not MSU engineering. The scholar, publication and grant data is MSU's; the
+    contract behind it is the vendor's generic one and is not saved here. No public,
+    documented API is exposed at scholars.msu.edu itself.
+  humanURL: https://scholars.msu.edu/
+  baseURL: https://scholars.msu.edu
   tags:
-  - Search
+  - Research Profiles
+  - Expertise
+  - Tenant
+  - Research
   properties:
-  - type: OpenAPI
-    url: openapi/michigan-state-university-search-api-openapi.yml
   - type: Documentation
-    url: https://catalog.lib.msu.edu/api/v1
-  - type: x-json-schema
-    url: json-schema/michigan-state-university-record-schema.json
-  - type: x-json-schema
-    url: json-schema/michigan-state-university-searchresponse-schema.json
-  - type: x-json-structure
-    url: json-structure/michigan-state-university-record-structure.json
-  - type: x-example
-    url: examples/michigan-state-university-search-example.json
-  - type: x-example
-    url: examples/michigan-state-university-record-example.json
-  - type: x-spectral-rules
-    url: rules/michigan-state-university-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/michigan-state-university-vocabulary.yml
-  - type: x-json-ld-context
-    url: json-ld/michigan-state-university-context.jsonld
+    url: https://scholars.msu.edu/
+  x-vendor:
+    name: Academic Analytics
+    platform: Discovery
+    generic_host: insight.discovery.academicanalytics.com
+    evidence: only external origins in the SPA bundle are academicanalytics.com hosts (2026-08-30)
 common:
+  - type: Website
+    url: https://www.msu.edu
+  - type: APIReference
+    url: https://catalog.lib.msu.edu/api/v1/?swagger
+  - type: LibraryCatalog
+    url: https://catalog.lib.msu.edu/
+  - type: ResearchRepository
+    url: https://d.lib.msu.edu/
+  - type: IdentityFederation
+    url: https://idp.idm.msu.edu/idp/shibboleth
+  - type: ResearchComputing
+    url: https://icer.msu.edu/
+  - type: Documentation
+    url: https://docs.icer.msu.edu/
+  - type: AIPolicy
+    url: https://ai.msu.edu/
+  - type: GitHubOrganization
+    url: https://github.com/MSU-Libraries
+  - type: GitHub
+    url: https://github.com/Michigan-State-University
+  - type: SourceCode
+    url: https://github.com/msu-icer
+  - type: LLMsTxt
+    url: https://www.msu.edu/llms.txt
+  - type: Sitemap
+    url: https://msu.edu/sitemap.xml
+  - type: PrivacyPolicy
+    url: https://msu.edu/privacy
+  - type: Support
+    url: https://msu.edu/contact
+  - type: Blog
+    url: https://msutoday.msu.edu
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/michigan-state-university/
+  - type: Conformance
+    url: conformance/michigan-state-university-conformance.yml
+  - type: Authentication
+    url: authentication/michigan-state-university-authentication.yml
+  - type: Scopes
+    url: scopes/michigan-state-university-scopes.yml
+  - type: Errors
+    url: errors/michigan-state-university-errors.yml
+  - type: Lifecycle
+    url: lifecycle/michigan-state-university-lifecycle.yml
   - type: CapabilityMap
     url: capabilities/michigan-state-university-capability-edges.yml
-    name: Michigan State University Business Capability Map
   - type: AgenticAccess
     url: agentic-access/michigan-state-university-agentic-access.yml
   - type: DomainSecurity
     url: security/michigan-state-university-domain-security.yml
-  - type: Website
-    url: https://www.msu.edu
-  - type: GitHub
-    url: https://github.com/Michigan-State-University
-  - type: SourceCode
-    url: https://github.com/MSU-Libraries
-  - type: LinkedIn
-    url: https://www.linkedin.com/school/michigan-state-university/
-  - type: DeveloperPortal
-    url: https://tech.msu.edu/network/authentication-authorization/
-  - type: Authentication
-    url: https://idp.idm.msu.edu/idp/shibboleth
   - type: Plans
     url: plans/michigan-state-university-plans-pricing.yml
   - type: RateLimits
@@ -194,8 +353,84 @@ common:
     url: finops/michigan-state-university-finops.yml
   - type: Review
     url: review.yml
-  - url: https://msutoday.msu.edu/rss
-    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Five institution-operated machine surfaces were found and verified live on 2026-08-30: a
+    keyless VuFind 11.0.4 REST API on catalog.lib.msu.edu whose OpenAPI 3.0.3 MSU publishes
+    itself at /api/v1/?swagger (re-fetched and compared against openapi/_original — info, all
+    six paths and all 17 component schemas match exactly), two OAI-PMH 2.0 providers, and a
+    Shibboleth SAML 2.0 IdP registered in InCommon as urn:mace:incommon:msu.edu. Three
+    education-regime domain standards are evidenced from those endpoints — oai-pmh,
+    shibboleth, saml. Two vendor platforms are recorded as tenant relationships rather than as
+    MSU contracts, and neither vendor's spec is saved here: D2L Brightspace (DNS CNAME
+    d2l.msu.edu -> msu.brightspace.com) and Academic Analytics (Scholars @ MSU). No Figshare,
+    Pure, Ex Libris, Dataverse or Symplectic tenancy could be confirmed — msu.figshare.com and
+    michigan-state.figshare.com both answer 202 with an empty body, which is figshare's
+    wildcard behaviour and not evidence of an MSU tenant, so none is claimed. What MSU does
+    not have: no developer portal, no API key issuance, no OAuth authorization server, no
+    changelog, no status page, no deprecation policy, no open data portal (data.msu.edu does
+    not resolve), and no public course-catalog or registrar API. Two probe hazards on this
+    institution, both recorded in errors/: msu.edu and tech.msu.edu sit behind Imperva, which
+    returns HTTP 200 with a JavaScript challenge for EVERY path including nonsense ones, so a
+    200 from those hosts proves nothing — page existence here was confirmed from
+    msu.edu/sitemap.xml instead; and catalog.lib.msu.edu / d.lib.msu.edu front their HTML with
+    a go-away bot filter that answers 418, while leaving /api/v1 and the OAI endpoints open.
+    One genuine contradiction worth naming: MSU publishes /.well-known/ai.txt declaring three
+    AI-Endpoints (msu.edu/ai/summary.json, /ai/faq.json, /ai/service.json) and an
+    llms.txt pointing at sitemap-llm.xml, but the Imperva edge serves a JS challenge instead
+    of JSON to every one of those endpoints, and sitemap-llm.xml is an empty urlset. The
+    stated agent policy and the deployed edge behaviour disagree.
+  evidence:
+  - url: https://catalog.lib.msu.edu/api/v1/?swagger
+    status: 200
+  - url: https://catalog.lib.msu.edu/api/v1/search?lookfor=test&limit=1
+    status: 200
+  - url: https://catalog.lib.msu.edu/api/v1/record
+    status: 400
+  - url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+    status: 200
+  - url: https://catalog.lib.msu.edu/OAI/Server?verb=ListMetadataFormats
+    status: 200
+  - url: https://d.lib.msu.edu/oai?verb=Identify
+    status: 200
+  - url: https://d.lib.msu.edu/oai?verb=ListMetadataFormats
+    status: 200
+  - url: https://idp.idm.msu.edu/idp/shibboleth
+    status: 200
+  - url: https://www.msu.edu/llms.txt
+    status: 200
+  - url: https://msu.edu/.well-known/ai.txt
+    status: 200
+  - url: https://msu.edu/sitemap.xml
+    status: 200
+  - url: https://msu.edu/sitemap-llm.xml
+    status: 200
+  - url: https://msu.edu/ai/summary.json
+    status: 200
+  - url: https://github.com/MSU-Libraries/oai_repo
+    status: 200
+  - url: https://d2l.msu.edu/
+    status: 200
+  - url: https://scholars.msu.edu/
+    status: 200
+  - url: https://icer.msu.edu/
+    status: 200
+  - url: https://docs.icer.msu.edu/
+    status: 200
+  - url: https://ai.msu.edu/
+    status: 200
+  - url: https://msutoday.msu.edu
+    status: 200
+  - url: https://msutoday.msu.edu/rss
+    status: 404
+  - url: https://data.msu.edu
+    status: 0
+  - url: https://d.lib.msu.edu/api
+    status: 401
+  - url: https://msu.figshare.com
+    status: 202
