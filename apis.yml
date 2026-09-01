@@ -57,6 +57,23 @@ tags:
   - Higher Education
   - University
   - Public Research University
+  - Land-Grant University
+  - Big Ten
+  - United States
+  - Michigan
+  - Library
+  - Library Catalog
+  - Digital Repository
+  - Metadata
+  - OAI-PMH
+  - Identity Federation
+  - Shibboleth
+  - Research Computing
+tags_raw:
+  - Education
+  - Higher Education
+  - University
+  - Public Research University
   - Land Grant University
   - Big Ten
   - United States
@@ -295,6 +312,9 @@ apis:
     generic_host: insight.discovery.academicanalytics.com
     evidence: only external origins in the SPA bundle are academicanalytics.com hosts (2026-08-30)
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/MSU-Libraries/oai_repo/blob/master/LICENSE
   - type: Website
     url: https://www.msu.edu
   - type: APIReference

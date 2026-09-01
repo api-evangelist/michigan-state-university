@@ -1,21 +1,21 @@
 ---
 kin_checks:
   slug: michigan-state-university
-  schema_version: 0.16.0
-  scored_at: '2026-08-29'
-  run_ts: 2026-08-29T230545
+  schema_version: 0.17.2
+  scored_at: '2026-09-01'
+  run_ts: 2026-09-01T063623
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.16.0.yml; counts below let you verify that.
+    in rubric/scoring-0.17.2.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 34
+    earned: 39
     partial: 5
-    missed: 65
+    missed: 60
     na: 26
   checks:
-  - id: well_known_published
+  - id: multiple_apis
     status: missed
-  - id: llms_txt_published
+  - id: well_known_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -83,9 +83,6 @@ kin_checks:
     status: missed
   - id: portal_present
     status: missed
-    detail: pointer liveness 0.0
-  - id: api_reference_present
-    status: missed
   - id: getting_started_present
     status: missed
   - id: sdk_count_1
@@ -100,8 +97,6 @@ kin_checks:
     status: missed
   - id: agent_skill_present
     status: missed
-  - id: support_channel
-    status: missed
   - id: plans_multiple
     status: missed
   - id: pricing_link
@@ -110,19 +105,13 @@ kin_checks:
     status: missed
   - id: terms_of_service
     status: missed
-  - id: privacy_policy
-    status: missed
   - id: compliance_published
     status: missed
   - id: trust_center
     status: missed
-  - id: reg_oauth_scopes
-    status: missed
   - id: reg_vulnerability_disclosure
     status: missed
   - id: reg_terms_of_service
-    status: missed
-  - id: reg_privacy_policy
     status: missed
   - id: reg_compliance_published
     status: missed
