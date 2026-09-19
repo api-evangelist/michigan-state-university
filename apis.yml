@@ -275,6 +275,11 @@ apis:
   tags:
   - Learning Management System
   - LMS
+  - Tenants
+  - Brightspace
+  tags_raw:
+  - Learning Management System
+  - LMS
   - Tenant
   - Brightspace
   properties:
@@ -299,6 +304,11 @@ apis:
   humanURL: https://scholars.msu.edu/
   baseURL: https://scholars.msu.edu
   tags:
+  - Research Profiles
+  - Expertise
+  - Tenants
+  - Research
+  tags_raw:
   - Research Profiles
   - Expertise
   - Tenant
