@@ -1,8 +1,7 @@
 {
   "provider": "michigan-state-university",
   "sources": [
-    "michigan-state-university-record-api-openapi.yml",
-    "michigan-state-university-search-api-openapi.yml"
+    "_original/michigan-state-university-catalog-rest.yaml"
   ],
   "outputs": [
     "michigan-state-university-record-api-openapi.yml",
@@ -11,6 +10,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "michigan-state-university-catalog-rest.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "michigan-state-university-catalog-rest.yaml: declared missing tag: Record",
+    "michigan-state-university-catalog-rest.yaml: declared missing tag: Search",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "michigan-state-university-record-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "michigan-state-university-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

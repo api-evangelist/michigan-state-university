@@ -1,0 +1,75 @@
+---
+specification: API Commons Authentication
+specificationVersion: '0.1'
+provider: Michigan State University
+providerId: michigan-state-university
+generated: '2026-08-30'
+method: probed
+source: >-
+  https://catalog.lib.msu.edu/api/v1/?swagger (live OpenAPI, no securitySchemes declared);
+  https://idp.idm.msu.edu/idp/shibboleth (live SAML 2.0 metadata);
+  live unauthenticated probes of each MSU-operated endpoint, 2026-08-30
+description: >-
+  How authentication works across Michigan State University's institution-operated surfaces.
+  MSU operates no API key programme, no developer registration, and no OAuth authorization
+  server for public API consumers. The public read surfaces are open and unauthenticated;
+  everything else is gated by institutional identity through the university's Shibboleth
+  Identity Provider, which is a federation membership question rather than an API onboarding one.
+surfaces:
+- name: MSU Libraries Catalog REST API (VuFind)
+  baseURL: https://catalog.lib.msu.edu/api/v1
+  operator: institution
+  scheme: none
+  registration: not_required
+  evidence:
+  - url: https://catalog.lib.msu.edu/api/v1/search?lookfor=test&limit=1
+    status: 200
+    note: Unauthenticated GET returned a populated SearchResponse envelope.
+  - url: https://catalog.lib.msu.edu/api/v1/?swagger
+    status: 200
+    note: >-
+      The published OpenAPI declares no components.securitySchemes and no security requirement
+      on any of its six operations. The Unauthorized schema exists in components but is
+      unreferenced by any operation response.
+- name: MSU Libraries Catalog OAI-PMH
+  baseURL: https://catalog.lib.msu.edu/OAI/Server
+  operator: institution
+  scheme: none
+  registration: not_required
+  evidence:
+  - url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+    status: 200
+- name: MSU Libraries Digital Repository OAI-PMH
+  baseURL: https://d.lib.msu.edu/oai
+  operator: institution
+  scheme: none
+  registration: not_required
+  evidence:
+  - url: https://d.lib.msu.edu/oai?verb=Identify
+    status: 200
+- name: MSU Identity Provider
+  baseURL: https://idp.idm.msu.edu/idp/shibboleth
+  operator: institution
+  scheme: saml2
+  registration: federation_membership
+  detail: >-
+    SAML 2.0 / Shibboleth IdP registered in InCommon as urn:mace:incommon:msu.edu. The
+    metadata document itself is public and unauthenticated; obtaining assertions requires
+    a registered service provider and an MSU NetID, i.e. institutional affiliation. This is
+    not a self-service developer credential and cannot be onboarded to from outside.
+  evidence:
+  - url: https://idp.idm.msu.edu/idp/shibboleth
+    status: 200
+not_available:
+- what: API keys
+  detail: No key issuance, developer account, or application registration surface found on any MSU host.
+- what: OAuth 2.0 authorization server
+  detail: >-
+    MSU's IT documentation describes OAuth 2.0 support for institutionally integrated
+    applications, but no public authorization or token endpoint, and no .well-known
+    OAuth or OpenID Connect discovery document, was reachable on an MSU host.
+- what: Administrative / student-record APIs
+  detail: >-
+    Not offered publicly. https://d.lib.msu.edu/api returns 401 with
+    WWW-Authenticate: Basic realm="traefik" — an internal operations endpoint, not a
+    public API with a documented credential path.

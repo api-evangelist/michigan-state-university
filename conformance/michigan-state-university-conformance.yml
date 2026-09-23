@@ -1,0 +1,86 @@
+---
+specification: API Evangelist Domain Standard Conformance
+specificationVersion: '0.1'
+provider: Michigan State University
+providerId: michigan-state-university
+regime: education
+generated: '2026-08-30'
+method: probed
+source: live HTTP probes of MSU-operated hosts, 2026-08-30
+description: >-
+  Conformance of Michigan State University's institution-operated surfaces against the
+  Kin Score `education` regulatory regime standards list. Reward-only: a standard is
+  recorded ONLY where a live probe of an MSU-operated endpoint returned protocol evidence.
+  Standards with no evidence are recorded as not_found, not as failures.
+conformant:
+- standard: oai-pmh
+  version: '2.0'
+  operator: institution
+  evidence:
+  - url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+    status: 200
+    location: OAI-PMH/Identify/protocolVersion
+    excerpt: "<repositoryName>Michigan State University Libraries Catalog</repositoryName><protocolVersion>2.0</protocolVersion><adminEmail>LIB.DL.pubcat@msu.edu</adminEmail>"
+  - url: https://catalog.lib.msu.edu/OAI/Server?verb=ListMetadataFormats
+    status: 200
+    location: OAI-PMH/ListMetadataFormats
+    excerpt: "metadataPrefix oai_dc; metadataPrefix marc21"
+  - url: https://d.lib.msu.edu/oai?verb=Identify
+    status: 200
+    location: OAI-PMH/Identify
+    excerpt: "<repositoryName>MSU Libraries Digital Repository</repositoryName><repositoryIdentifier>d.lib.msu.edu</repositoryIdentifier><adminEmail>LIB.DL.repoteam@msu.edu</adminEmail>"
+  - url: https://d.lib.msu.edu/oai?verb=ListMetadataFormats
+    status: 200
+    location: OAI-PMH/ListMetadataFormats
+    excerpt: "metadataPrefix oai_dc; mods (mods-3-4.xsd); marcxml (MARC21slim)"
+  notes: >-
+    Both endpoints are on MSU's own registrable domain and are administered from @msu.edu
+    addresses. The digital repository endpoint runs oai_repo, an OAI-PMH server library
+    written and maintained by MSU Libraries themselves and published Apache-2.0 at
+    https://github.com/MSU-Libraries/oai_repo — institution engineering, not a vendor deployment.
+- standard: saml
+  version: '2.0'
+  operator: institution
+  evidence:
+  - url: https://idp.idm.msu.edu/idp/shibboleth
+    status: 200
+    location: md:EntityDescriptor/md:IDPSSODescriptor@protocolSupportEnumeration
+    excerpt: "entityID=\"urn:mace:incommon:msu.edu\" protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\""
+  notes: SAML 2.0 metadata served directly, unauthenticated, as XML.
+- standard: shibboleth
+  operator: institution
+  evidence:
+  - url: https://idp.idm.msu.edu/idp/shibboleth
+    status: 200
+    location: md:EntityDescriptor xmlns:shibmd
+    excerpt: "xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\" at /idp/shibboleth on idp.idm.msu.edu"
+  notes: >-
+    Shibboleth IdP, registered in the InCommon federation under the entityID
+    urn:mace:incommon:msu.edu. Institution-operated by definition.
+not_found:
+- standard: scim
+  detail: No SCIM 2.0 /ServiceProviderConfig or provisioning surface found on an MSU host.
+- standard: lti
+  detail: >-
+    MSU's LMS is D2L Brightspace at d2l.msu.edu (CNAME msu.brightspace.com). Brightspace
+    supports LTI, but the conformance belongs to D2L's contract, not MSU's — recorded as a
+    tenant relationship in apis.yml, not as MSU conformance.
+- standard: oneroster
+  detail: No OneRoster endpoint found.
+- standard: ed-fi
+  detail: No Ed-Fi ODS/API found; Ed-Fi is a K-12 standard and is not expected here.
+- standard: caliper
+  detail: No Caliper analytics endpoint found on an MSU host.
+- standard: qti
+  detail: No QTI surface found.
+- standard: orcid
+  detail: >-
+    No ORCID member API integration evidenced on an MSU-operated host. The OAI-PMH
+    ListMetadataFormats responses expose oai_dc, mods and marcxml only — no ORCID identifiers
+    in the advertised schemas.
+- standard: datacite
+  detail: >-
+    No DataCite metadata format advertised by either OAI-PMH endpoint and no MSU DOI
+    minting surface found.
+- standard: crossref
+  detail: No Crossref deposit or query surface operated by MSU found.

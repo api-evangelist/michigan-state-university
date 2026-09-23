@@ -1,3 +1,10 @@
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: >-
+    plans/michigan-state-university-plans-pricing.yml
+  note: >-
+    Written by API Evangelist, not published by Michigan State University.
 specification: FinOps Framework
 specificationVersion: '1.0'
 schema: https://www.finops.org/framework/

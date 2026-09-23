@@ -1,0 +1,69 @@
+---
+specification: API Commons Errors
+specificationVersion: '0.1'
+provider: Michigan State University
+providerId: michigan-state-university
+generated: '2026-08-30'
+method: probed
+source: >-
+  Live error probes of https://catalog.lib.msu.edu/api/v1, https://catalog.lib.msu.edu/OAI/Server
+  and https://d.lib.msu.edu/oai on 2026-08-30, reconciled against the published OpenAPI
+  components.schemas.Error.
+description: >-
+  Error behaviour of Michigan State University's institution-operated read surfaces, taken
+  from real failing requests rather than from the specification alone. Two different error
+  models are in play — a JSON envelope on the catalog REST API and OAI-PMH's own XML error
+  element — and the OAI-PMH one deliberately returns HTTP 200 for protocol-level errors,
+  which is correct per OAI-PMH 2.0 and will trip any client that reads status codes only.
+models:
+- name: VuFind REST JSON error envelope
+  surface: https://catalog.lib.msu.edu/api/v1
+  media_type: application/json
+  shape:
+    status: ERROR
+    statusMessage: string
+  schema_ref: components.schemas.Error
+  observed:
+  - request: GET /api/v1/record
+    status: 400
+    body: '{"status":"ERROR","statusMessage":"Missing id"}'
+  - request: GET /api/v1/search?limit=99999
+    status: 400
+    body: '{"status":"ERROR","statusMessage":"Invalid limit"}'
+  spec_gap: >-
+    The OpenAPI declares only `200` and `default` responses on all six operations, so the
+    400 observed here is unmodelled — a client generated from the contract will not expect it.
+    components.schemas.Unauthorized is declared but referenced by no operation.
+- name: OAI-PMH 2.0 protocol error
+  surface:
+  - https://catalog.lib.msu.edu/OAI/Server
+  - https://d.lib.msu.edu/oai
+  media_type: text/xml
+  shape:
+    element: OAI-PMH/error
+    attribute: code
+  observed:
+  - request: GET /oai?verb=Bogus (d.lib.msu.edu)
+    status: 200
+    body: '<error code="badVerb">The value of the ''verb'' argument in the request is not legal.</error>'
+  - request: GET /OAI/Server?verb=Bogus (catalog.lib.msu.edu)
+    status: 200
+    body: '<error code="badVerb">Illegal OAI Verb</error>'
+  note: >-
+    HTTP 200 with an in-body error code is the OAI-PMH 2.0 specified behaviour, not a defect.
+    Standard codes: badArgument, badVerb, badResumptionToken, cannotDisseminateFormat,
+    idDoesNotExist, noRecordsMatch, noMetadataFormats, noSetHierarchy.
+edge_behaviour:
+- host: catalog.lib.msu.edu
+  status: 418
+  detail: >-
+    HTML paths on the library hosts are fronted by a go-away bot filter that answers
+    non-browser clients with HTTP 418 and a "Verifying you are human..." interstitial.
+    The /api/v1 and /OAI/Server paths are exempt and answer normally. A 418 from this host
+    is the WAF, not the API.
+- host: msu.edu
+  status: 200
+  detail: >-
+    www.msu.edu and tech.msu.edu sit behind Imperva/Incapsula, which returns HTTP 200 with a
+    JavaScript challenge body to non-browser clients. A 200 from these hosts is not proof the
+    resource was served — read the body.

@@ -1,0 +1,46 @@
+---
+specification: API Commons Scopes
+specificationVersion: '0.1'
+provider: Michigan State University
+providerId: michigan-state-university
+generated: '2026-08-30'
+method: derived
+source: openapi/_original/michigan-state-university-catalog-rest.yaml
+description: >-
+  Michigan State University publishes NO authorization scopes. This artifact records that
+  absence explicitly rather than leaving the reader to infer it, and describes the read
+  surface each public operation actually exposes so an agent can reason about consequence
+  without a scope vocabulary to lean on.
+declared_scopes: []
+declared_scopes_note: >-
+  The published Library Catalog OpenAPI (v11.0.4) declares no components.securitySchemes,
+  therefore no oauth2 flows and no scopes. The Shibboleth IdP issues SAML attributes, not
+  OAuth scopes; attribute release is negotiated per service provider through InCommon and
+  is not published as a machine-readable scope list.
+implied_read_surface:
+- name: catalog.record.read
+  operations:
+  - GET /record
+  - GET /index2/record
+  - GET /web/record
+  consequence: read
+  data: Public bibliographic and web-page records from the library discovery index.
+  authorization: none — open to anonymous callers
+- name: catalog.search.read
+  operations:
+  - GET /search
+  - GET /index2/search
+  - GET /web/search
+  consequence: read
+  data: Public search results and facets over the library discovery index.
+  authorization: none — open to anonymous callers
+- name: metadata.harvest.read
+  operations:
+  - GET /OAI/Server?verb=*
+  - GET /oai?verb=*
+  consequence: read
+  data: Dublin Core, MARC21/MARCXML and MODS metadata records for harvesting.
+  authorization: none — open to anonymous harvesters
+warning: >-
+  These names are OUR descriptive labels for reasoning about consequence. They are NOT
+  published by Michigan State University and must never be sent as scope values.

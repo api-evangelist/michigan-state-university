@@ -1,4 +1,16 @@
 openapi: 3.0.3
+x-provenance:
+  generated: '2026-08-30'
+  method: searched
+  source: https://catalog.lib.msu.edu/api/v1/?swagger
+  operator: institution
+  note: >-
+    Pristine pre-refine copy of the OpenAPI that Michigan State University Libraries publishes
+    live from its own VuFind deployment. Re-fetched and byte-compared on 2026-08-30: info,
+    all six paths and all 17 component schemas match the live document exactly. The ONE edit
+    we made is servers[]: the published document ships a RELATIVE server url `/api/v1`
+    (hostless), and we absolutised it to https://catalog.lib.msu.edu/api/v1 from the fetch
+    host. Everything else is Michigan State University's own.
 info:
   title: Library Catalog
   version: 11.0.4

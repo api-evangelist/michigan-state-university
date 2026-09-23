@@ -1,3 +1,10 @@
+x-provenance:
+  generated: '2026-08-30'
+  method: searched
+  source: >-
+    https://lib.msu.edu ; https://tech.msu.edu ; absence of any published pricing or plan page
+  note: >-
+    Written by API Evangelist, not published by Michigan State University.
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans

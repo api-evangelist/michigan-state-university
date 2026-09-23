@@ -4,14 +4,12 @@
     "schema": "https://schema.org/",
     "msu": "https://catalog.lib.msu.edu/api/v1/#",
     "@vocab": "https://catalog.lib.msu.edu/api/v1/#",
-
     "institution": {
       "@id": "schema:CollegeOrUniversity",
       "@type": "@id"
     },
     "name": "schema:name",
     "url": "schema:url",
-
     "Record": "schema:CreativeWork",
     "id": "schema:identifier",
     "uuid": "schema:identifier",
@@ -46,7 +44,6 @@
       "@id": "schema:url",
       "@type": "@id"
     },
-
     "authors": "schema:author",
     "primary": "schema:author",
     "secondary": "schema:contributor",
@@ -54,20 +51,23 @@
       "@id": "schema:author",
       "@type": "schema:Organization"
     },
-
     "subjects": "schema:about",
     "subject": "schema:name",
     "heading": "schema:name",
     "source": "schema:inDefinedTermSet",
-
     "urls": "schema:url",
     "desc": "schema:description",
-
     "facets": "schema:itemListElement",
     "facet": "schema:DefinedTerm",
     "value": "schema:value",
     "count": "schema:count",
     "resultCount": "schema:numberOfItems"
+  },
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "derived",
+    "source": "openapi/_original/michigan-state-university-catalog-rest.yaml (schema.org mapping of catalog record terms)",
+    "note": "Derived by API Evangelist from the OpenAPI Michigan State University Libraries publishes at https://catalog.lib.msu.edu/api/v1/?swagger. Not authored or published by Michigan State University."
   },
   "@type": "schema:CollegeOrUniversity",
   "name": "Michigan State University",

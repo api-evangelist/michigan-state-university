@@ -1,4 +1,11 @@
 ---
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: >-
+    openapi/_original/michigan-state-university-catalog-rest.yaml (info + components.schemas descriptions)
+  note: >-
+    Written by API Evangelist, not published by Michigan State University.
 vocabulary:
   name: MSU Libraries Catalog API Vocabulary
   description: >-

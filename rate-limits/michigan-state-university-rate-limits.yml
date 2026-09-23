@@ -1,3 +1,10 @@
+x-provenance:
+  generated: '2026-08-30'
+  method: searched
+  source: >-
+    absence of any published rate-limit table on an MSU host; no RateLimit-* or Retry-After headers observed on live probes 2026-08-30
+  note: >-
+    Written by API Evangelist, not published by Michigan State University.
 specification: API Commons Rate Limits
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits

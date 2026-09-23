@@ -1,10 +1,19 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/api-evangelist/michigan-state-university/main/json-schema/michigan-state-university-searchresponse-schema.json",
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "derived",
+    "source": "openapi/_original/michigan-state-university-catalog-rest.yaml (components.schemas.SearchResponse)",
+    "note": "Derived by API Evangelist from the OpenAPI Michigan State University Libraries publishes at https://catalog.lib.msu.edu/api/v1/?swagger. Not authored or published by Michigan State University."
+  },
   "title": "MSU Libraries Catalog Search Response",
   "description": "JSON Schema for the SearchResponse object returned by the MSU Libraries VuFind REST API /search and /record endpoints. Derived from the published OpenAPI 3.0.3 SearchResponse schema.",
   "type": "object",
-  "required": ["resultCount", "status"],
+  "required": [
+    "resultCount",
+    "status"
+  ],
   "properties": {
     "resultCount": {
       "type": "integer",
@@ -13,40 +22,70 @@
     "records": {
       "type": "array",
       "description": "Records",
-      "items": { "$ref": "https://raw.githubusercontent.com/api-evangelist/michigan-state-university/main/json-schema/michigan-state-university-record-schema.json" }
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/api-evangelist/michigan-state-university/main/json-schema/michigan-state-university-record-schema.json"
+      }
     },
     "facets": {
       "type": "array",
       "description": "Facets",
-      "items": { "$ref": "#/$defs/Facet" }
+      "items": {
+        "$ref": "#/$defs/Facet"
+      }
     },
     "resumptionToken": {
       "type": "object",
       "description": "Token for retrieving the next batch of results",
       "properties": {
-        "token": { "type": "string", "description": "Token to use for the next request" },
-        "expires": { "type": "string", "format": "date-time", "description": "Time when the token expires" }
+        "token": {
+          "type": "string",
+          "description": "Token to use for the next request"
+        },
+        "expires": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time when the token expires"
+        }
       }
     },
     "status": {
       "type": "string",
       "description": "Status code",
-      "enum": ["OK"]
+      "enum": [
+        "OK"
+      ]
     }
   },
   "$defs": {
     "Facet": {
       "type": "object",
       "properties": {
-        "value": { "type": "string", "description": "Facet value" },
-        "translated": { "type": "string", "description": "Translated facet value" },
-        "count": { "type": "integer", "description": "Count of records found if the facet is added as a filter" },
-        "href": { "type": "string", "description": "The current search with the facet added as a filter" },
-        "isApplied": { "type": "boolean", "description": "True if the facet is in use in the filter parameter of the query" },
+        "value": {
+          "type": "string",
+          "description": "Facet value"
+        },
+        "translated": {
+          "type": "string",
+          "description": "Translated facet value"
+        },
+        "count": {
+          "type": "integer",
+          "description": "Count of records found if the facet is added as a filter"
+        },
+        "href": {
+          "type": "string",
+          "description": "The current search with the facet added as a filter"
+        },
+        "isApplied": {
+          "type": "boolean",
+          "description": "True if the facet is in use in the filter parameter of the query"
+        },
         "children": {
           "type": "array",
           "description": "For hierarchical facets, any child facets",
-          "items": { "$ref": "#/$defs/Facet" }
+          "items": {
+            "$ref": "#/$defs/Facet"
+          }
         }
       }
     }

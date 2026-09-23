@@ -1,4 +1,10 @@
 {
+  "x-provenance": {
+    "generated": "2026-08-30",
+    "method": "derived",
+    "source": "openapi/_original/michigan-state-university-catalog-rest.yaml (GET /record response shape)",
+    "note": "Derived by API Evangelist from the OpenAPI Michigan State University Libraries publishes at https://catalog.lib.msu.edu/api/v1/?swagger. Not authored or published by Michigan State University."
+  },
   "request": {
     "method": "GET",
     "url": "https://catalog.lib.msu.edu/api/v1/record?id=folio.in00002742351",
@@ -28,14 +34,26 @@
         "series": [],
         "subjects": [
           [
-            { "subject": "Land use" },
-            { "subject": "Michigan" },
-            { "subject": "Planning." }
+            {
+              "subject": "Land use"
+            },
+            {
+              "subject": "Michigan"
+            },
+            {
+              "subject": "Planning."
+            }
           ],
           [
-            { "subject": "Land use" },
-            { "subject": "Government policy" },
-            { "subject": "Michigan." }
+            {
+              "subject": "Land use"
+            },
+            {
+              "subject": "Government policy"
+            },
+            {
+              "subject": "Michigan."
+            }
           ]
         ],
         "title": "Michigan's land, Michigan's future : final report of the Michigan Land Use Leadership Council.",

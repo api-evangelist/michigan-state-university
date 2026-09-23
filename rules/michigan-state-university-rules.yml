@@ -1,4 +1,11 @@
 ---
+x-provenance:
+  generated: '2026-08-30'
+  method: derived
+  source: >-
+    openapi/_original/michigan-state-university-catalog-rest.yaml (patterns observed in the published contract)
+  note: >-
+    Written by API Evangelist, not published by Michigan State University.
 # Spectral ruleset encoding patterns observed in the MSU Libraries VuFind
 # Catalog REST API (OpenAPI 3.0.3, Library Catalog v11.0.4).
 formats:

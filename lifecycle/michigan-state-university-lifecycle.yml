@@ -1,0 +1,68 @@
+---
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: Michigan State University
+providerId: michigan-state-university
+generated: '2026-08-30'
+method: probed
+source: >-
+  https://catalog.lib.msu.edu/api/v1/?swagger info.version; OAI-PMH Identify responses;
+  https://github.com/MSU-Libraries repository activity; probes on 2026-08-30
+description: >-
+  Versioning, change communication and deprecation posture for Michigan State University's
+  institution-operated API surfaces. MSU publishes no API changelog, no deprecation policy,
+  no status page and no release notes for any of these surfaces. Version signal exists but
+  it is the upstream software's version, which is the normal shape for a university running
+  library platforms it also helps build.
+versioning:
+- surface: MSU Libraries Catalog REST API
+  scheme: path
+  current: v1
+  baseURL: https://catalog.lib.msu.edu/api/v1
+  contract_version: 11.0.4
+  contract_version_meaning: >-
+    info.version tracks the VuFind release MSU is running, not an independent contract
+    version. A VuFind upgrade can therefore change info.version without any change to the
+    interface, and can change the interface without changing the path version.
+  evidence:
+  - url: https://catalog.lib.msu.edu/api/v1/?swagger
+    status: 200
+- surface: OAI-PMH endpoints
+  scheme: protocol
+  current: '2.0'
+  contract_version_meaning: OAI-PMH protocolVersion, fixed by the standard.
+  evidence:
+  - url: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
+    status: 200
+  - url: https://d.lib.msu.edu/oai?verb=Identify
+    status: 200
+- surface: MSU Identity Provider
+  scheme: saml_metadata
+  current: SAML 2.0
+  contract_version_meaning: >-
+    Change is communicated through InCommon federation metadata refresh, not through an
+    MSU-published channel.
+  evidence:
+  - url: https://idp.idm.msu.edu/idp/shibboleth
+    status: 200
+change_communication:
+  changelog: none_found
+  release_notes: none_found
+  status_page: none_found
+  deprecation_policy: none_found
+  sunset_headers: not_observed
+  breaking_change_notice: none_found
+  detail: >-
+    No changelog, status page or deprecation policy was found for any MSU API surface. The
+    closest thing to a public change record is commit history in the MSU Libraries GitHub
+    organisation, notably MSU-Libraries/catalog (the VuFind deployment) and
+    MSU-Libraries/oai_repo (the OAI-PMH server library MSU authors and releases under
+    Apache-2.0, last pushed 2026-05-08). That is source history, not an API lifecycle
+    commitment, and should not be read as one.
+stability_assessment:
+  level: informal
+  detail: >-
+    These are library infrastructure endpoints operated for institutional purposes and
+    harvest partners, not a productised API programme. They have been stable in practice,
+    but MSU has made no public commitment to keep them so and has published no way to find
+    out when they change.
