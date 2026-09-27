@@ -260,6 +260,7 @@ apis:
   - type: Conformance
     url: conformance/michigan-state-university-conformance.yml
 - aid: michigan-state-university:brightspace-lms
+  x-published: false
   name: D2L Brightspace at MSU (tenant)
   x-operator: tenant
   description: >-
