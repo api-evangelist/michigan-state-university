@@ -506,29 +506,46 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Facet:
+    SecondarySearchResponse:
       type: object
       properties:
-        value:
-          description: Facet value
-          type: string
-        translated:
-          description: Translated facet value
-          type: string
-        count:
-          description: Count of records that can be found if the facet is added to the search as a filter
+        resultCount:
+          description: Number of results
           type: integer
-        href:
-          description: The current search with the facet added as a filter
-          type: string
-        isApplied:
-          description: True if if the facet is in use in the filter parameter of the query
-          type: boolean
-        children:
-          description: For hierarchical facets, any child facets
+        records:
+          description: Records
+          type: array
+          items:
+            $ref: '#/components/schemas/SecondaryRecord'
+        facets:
+          description: Facets
           type: array
           items:
             $ref: '#/components/schemas/Facet'
+        resumptionToken:
+          $ref: '#/components/schemas/ResumptionToken'
+        status:
+          description: Status code
+          type: string
+          enum:
+          - OK
+      required:
+      - resultCount
+      - status
+    Error:
+      type: object
+      properties:
+        status:
+          description: Status code
+          type: string
+          enum:
+          - ERROR
+        statusMessage:
+          description: A descriptive error message
+          type: string
+      required:
+      - status
+      - statusMessage
     Authors:
       type: object
       description: Deduplicated author information including primary, corporate and secondary authors
@@ -548,99 +565,6 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/AuthorWithRoles'
-    AuthorWithRoles:
-      type: object
-      properties:
-        Author name:
-          type: array
-          description: Author's roles
-          items:
-            type: string
-    ResumptionToken:
-      type: object
-      properties:
-        token:
-          description: Token to use for the next request
-          type: string
-        expires:
-          description: Time when the token expires
-          type: string
-          format: date-time
-    RecordLink:
-      type: object
-      properties:
-        title:
-          description: Link title
-          type: string
-        value:
-          description: Link value
-          type: string
-        link:
-          $ref: '#/components/schemas/Link'
-    SearchResponse:
-      type: object
-      properties:
-        resultCount:
-          description: Number of results
-          type: integer
-        records:
-          description: Records
-          type: array
-          items:
-            $ref: '#/components/schemas/Record'
-        facets:
-          description: Facets
-          type: array
-          items:
-            $ref: '#/components/schemas/Facet'
-        resumptionToken:
-          $ref: '#/components/schemas/ResumptionToken'
-        status:
-          description: Status code
-          type: string
-          enum:
-          - OK
-      required:
-      - resultCount
-      - status
-    Url:
-      type: object
-      properties:
-        url:
-          description: URL
-          type: string
-        desc:
-          description: URL Description
-          type: string
-    Error:
-      type: object
-      properties:
-        status:
-          description: Status code
-          type: string
-          enum:
-          - ERROR
-        statusMessage:
-          description: A descriptive error message
-          type: string
-      required:
-      - status
-      - statusMessage
-    WebRecord:
-      type: object
-      properties:
-        id:
-          description: Record unique ID (can be used in the record endpoint)
-          type: string
-        lastModified:
-          description: Last modification date
-          type: string
-        title:
-          description: Title including any subtitle
-          type: string
-        url:
-          description: URL for resource
-          type: string
     SecondaryRecord:
       type: object
       properties:
@@ -945,31 +869,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Url'
-    Subject:
+    WebRecord:
       type: object
       properties:
-        heading:
-          description: Subject heading parts as an array from the least specific to the most specific
-          type: array
-          items:
-            type: string
-        type:
-          description: Subject type
+        id:
+          description: Record unique ID (can be used in the record endpoint)
           type: string
-          enum:
-          - ''
-          - personal name
-          - corporate name
-          - meeting name
-          - uniform title
-          - chronological
-          - topic
-          - geographic
-          - genre/form
-          - occupation
-          - keyword
-        source:
-          description: Subject source/thesaurus (e.g. lcsh, mesh)
+        lastModified:
+          description: Last modification date
+          type: string
+        title:
+          description: Title including any subtitle
+          type: string
+        url:
+          description: URL for resource
           type: string
     Record:
       type: object
@@ -1281,6 +1194,27 @@ components:
         bibnum:
           description: Sierra Bibnumber
           type: string
+    ResumptionToken:
+      type: object
+      properties:
+        token:
+          description: Token to use for the next request
+          type: string
+        expires:
+          description: Time when the token expires
+          type: string
+          format: date-time
+    RecordLink:
+      type: object
+      properties:
+        title:
+          description: Link title
+          type: string
+        value:
+          description: Link value
+          type: string
+        link:
+          $ref: '#/components/schemas/Link'
     Link:
       type: object
       properties:
@@ -1295,32 +1229,63 @@ components:
           type: array
           items:
             type: string
-    SecondarySearchResponse:
+    AuthorWithRoles:
       type: object
       properties:
-        resultCount:
-          description: Number of results
-          type: integer
-        records:
-          description: Records
+        Author name:
+          type: array
+          description: Author's roles
+          items:
+            type: string
+    Subject:
+      type: object
+      properties:
+        heading:
+          description: Subject heading parts as an array from the least specific to the most specific
           type: array
           items:
-            $ref: '#/components/schemas/SecondaryRecord'
-        facets:
-          description: Facets
+            type: string
+        type:
+          description: Subject type
+          type: string
+          enum:
+          - ''
+          - personal name
+          - corporate name
+          - meeting name
+          - uniform title
+          - chronological
+          - topic
+          - geographic
+          - genre/form
+          - occupation
+          - keyword
+        source:
+          description: Subject source/thesaurus (e.g. lcsh, mesh)
+          type: string
+    Facet:
+      type: object
+      properties:
+        value:
+          description: Facet value
+          type: string
+        translated:
+          description: Translated facet value
+          type: string
+        count:
+          description: Count of records that can be found if the facet is added to the search as a filter
+          type: integer
+        href:
+          description: The current search with the facet added as a filter
+          type: string
+        isApplied:
+          description: True if if the facet is in use in the filter parameter of the query
+          type: boolean
+        children:
+          description: For hierarchical facets, any child facets
           type: array
           items:
             $ref: '#/components/schemas/Facet'
-        resumptionToken:
-          $ref: '#/components/schemas/ResumptionToken'
-        status:
-          description: Status code
-          type: string
-          enum:
-          - OK
-      required:
-      - resultCount
-      - status
     WebSearchResponse:
       type: object
       properties:
@@ -1347,6 +1312,41 @@ components:
       required:
       - resultCount
       - status
+    SearchResponse:
+      type: object
+      properties:
+        resultCount:
+          description: Number of results
+          type: integer
+        records:
+          description: Records
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+        facets:
+          description: Facets
+          type: array
+          items:
+            $ref: '#/components/schemas/Facet'
+        resumptionToken:
+          $ref: '#/components/schemas/ResumptionToken'
+        status:
+          description: Status code
+          type: string
+          enum:
+          - OK
+      required:
+      - resultCount
+      - status
+    Url:
+      type: object
+      properties:
+        url:
+          description: URL
+          type: string
+        desc:
+          description: URL Description
+          type: string
 x-provenance:
   generated: '2026-08-30'
   method: searched
