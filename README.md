@@ -1,4 +1,4 @@
-# Michigan State University (michigan-state-university)
+# Michigan State University
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,51 +64,173 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Michigan State University (MSU) is a public land-grant research university in East Lansing, Michigan, United States, ranked #89 in the QS World University Rankings 2025. This repository catalogs MSU's confirmed public developer and API footprint as an [APIs.json](http://apisjson.org) provider profile. MSU has no single consolidated developer portal; its verified public machine interfaces are concentrated in the MSU Libraries platforms (VuFind catalog REST API and OAI-PMH endpoints), alongside a Shibboleth/SAML + OAuth 2.0 identity service.
+Michigan State University is a public land-grant research university in East Lansing, Michigan, and a founding member of the Big Ten and the AAU. It runs no central developer portal, issues no API keys, and operates no self-service onboarding of any kind, and this profile does not pretend otherwise. What it genuinely operates, on its own msu.edu hosts, is a small set of real machine surfaces run by MSU Libraries and MSU IT: a keyless VuFind 11.0.4 REST API for the library discovery index at catalog.lib.msu.edu/api/v1, whose OpenAPI 3.0.3 the university itself publishes live at /api/v1/?swagger; two OAI-PMH 2.0 providers, one over the catalog and one over the digital repository at d.lib.msu.edu, the latter running oai_repo — an OAI-PMH server library MSU Libraries wrote themselves and release Apache-2.0 on GitHub, which is real institutional engineering rather than a vendor deployment; and a Shibboleth SAML 2.0 identity provider registered in InCommon as urn:mace:incommon:msu.edu. MSU also publishes an llms.txt and a /.well-known/ai.txt naming three AI content endpoints, though the Imperva edge in front of msu.edu answers every non-browser client with a JavaScript challenge, so those declared endpoints are not actually reachable by the agents they are addressed to. Two vendor platforms are recorded as tenant relationships rather than as MSU contracts: D2L Brightspace (d2l.msu.edu, CNAME msu.brightspace.com) and Academic Analytics (Scholars @ MSU at scholars.msu.edu). Student records, registration, HR and finance are behind institutional SSO and are not public APIs.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/michigan-state-university/refs/heads/main/apis.yml
-- Run it with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=michigan-state-university-api-evangelist&utm_content=repo
+**Areas:** Education · Higher Education · University · Public Research University · Land-Grant University · Big Ten · United States · Michigan · Library · Library Catalog · Digital Repository · Metadata
 
-## Type
+## Michigan State University on APIs.io
 
-Index / Consumer / 3rd-Party
+Everything profiled for Michigan State University is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/michigan-state-university/](https://apis.io/providers/michigan-state-university/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-Education, Higher Education, University, Library, Open Data, Metadata, United States, Michigan
+- [MSU Libraries Catalog Record API](https://apis.io/apis/michigan-state-university/michigan-state-university-record-api/) — Record-retrieval half of the MSU Libraries VuFind 11.0.4 REST API, served from the university's own host at catalog.lib.msu.edu/api/v1. Keyless and…
+- [MSU Libraries Catalog Search API](https://apis.io/apis/michigan-state-university/michigan-state-university-search-api/) — Search half of the same MSU Libraries VuFind 11.0.4 REST API on catalog.lib.msu.edu/api/v1 — GET /search, /index2/search and /web/search return result sets…
+- [MSU Libraries Catalog OAI-PMH](https://apis.io/apis/michigan-state-university/catalog-oai/) — OAI-PMH 2.0 metadata harvesting provider over the MSU Libraries catalog, on the university's own host. Verified live on 2026-08-30: verb=Identify returns…
+- [MSU Libraries Digital Repository OAI-PMH](https://apis.io/apis/michigan-state-university/dlib-oai/) — OAI-PMH 2.0 provider over the MSU Libraries Digital Repository at d.lib.msu.edu. Verified live on 2026-08-30: verb=Identify returns repositoryName "MSU…
+- [MSU Identity Provider (Shibboleth / SAML 2.0)](https://apis.io/apis/michigan-state-university/idp/) — MSU's federated single sign-on. The Shibboleth Identity Provider publishes SAML 2.0 metadata unauthenticated at idp.idm.msu.edu/idp/shibboleth — verified…
+- [D2L Brightspace at MSU (tenant)](https://apis.io/apis/michigan-state-university/brightspace-lms/) — MSU's learning management system is D2L Brightspace, running as an MSU-branded tenant at d2l.msu.edu, which CNAMEs to msu.brightspace.com — confirmed by DNS…
+- [Scholars @ MSU (Academic Analytics tenant)](https://apis.io/apis/michigan-state-university/scholars-msu/) — MSU's public research-expertise portal at scholars.msu.edu. The host is MSU-branded, but the application is an Angular single-page client whose compiled…
 
-## APIs
+### Published properties
 
-- **MSU Libraries Catalog REST API (VuFind)** — VuFind REST API (OpenAPI 3.0.3, VuFind v11.0.4) for the library catalog search index. Docs: https://catalog.lib.msu.edu/api/v1 — OpenAPI: https://catalog.lib.msu.edu/api/v1/?swagger
-- **MSU Libraries Catalog OAI-PMH** — OAI-PMH 2.0 metadata harvesting for the "Michigan State University Libraries Catalog" repository. Docs: https://catalog.lib.msu.edu/OAI/Server?verb=Identify
-- **MSU Libraries Digital Repository OAI-PMH** — OAI-PMH 2.0 metadata harvesting for the "MSU Libraries Digital Repository". Docs: https://d.lib.msu.edu/oai?verb=Identify
-- **MSU Identity Provider (Shibboleth / SAML / OAuth 2.0)** — Federated SSO; gated to registered institutional integrations. Docs: https://tech.msu.edu/network/authentication-authorization/
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Plans, Rate Limits, and FinOps
+#### Agentic access (1)
 
-- Plans & Pricing: [plans/michigan-state-university-plans-pricing.yml](plans/michigan-state-university-plans-pricing.yml)
-- Rate Limits: [rate-limits/michigan-state-university-rate-limits.yml](rate-limits/michigan-state-university-rate-limits.yml)
-- FinOps: [finops/michigan-state-university-finops.yml](finops/michigan-state-university-finops.yml)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Michigan State University Agentic Access](https://apis.io/agentic-access/michigan-state-university/michigan-state-university-agentic-access/)
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+#### JSON Schema (2)
 
-## Common Properties
+The data models the API reads and writes.
 
-- Website: https://www.msu.edu
-- GitHub (university): https://github.com/Michigan-State-University
-- Source Code (MSU Libraries): https://github.com/MSU-Libraries
-- LinkedIn: https://www.linkedin.com/school/michigan-state-university/
-- Developer Portal (auth docs): https://tech.msu.edu/network/authentication-authorization/
-- Authentication: https://idp.idm.msu.edu/idp/shibboleth
-- Review: [review.yml](review.yml)
+- [MSU Libraries Catalog Record](https://apis.io/schemas/michigan-state-university/michigan-state-university-record/)
+- [MSU Libraries Catalog Search Response](https://apis.io/schemas/michigan-state-university/michigan-state-university-searchresponse/)
 
-## Notes
+#### JSON Structure (2)
 
-All URLs in this profile were probed directly on 2026-06-03. The VuFind catalog REST API and both OAI-PMH endpoints returned valid responses; the Shibboleth IdP and auth documentation resolve but the identity service is gated to registered service providers. The digital repository `/api` path requires authentication (HTTP 401) and no IIIF root was found. No `data.msu.edu` open-data API, central `api.msu.edu`/`developer.msu.edu` gateway, or public status page was found. The `scholars.msu.edu` research-profiles system runs on Symplectic Elements with no confirmed open public API. No endpoints were fabricated.
+Data models expressed in JSON Structure.
 
-## Maintainers
+- [Michigan State University Record Structure](https://apis.io/json-structure/michigan-state-university/michigan-state-university-record-structure/)
+- [Michigan State University Searchresponse Structure](https://apis.io/json-structure/michigan-state-university/michigan-state-university-searchresponse-structure/)
 
-- Kin Lane — kin@apievangelist.com
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Michigan State University Context](https://apis.io/jsonld/michigan-state-university/michigan-state-university-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [MSU Libraries Catalog API Vocabulary](https://apis.io/vocabularies/michigan-state-university/michigan-state-university-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Michigan State University Record Example](https://apis.io/examples/michigan-state-university/michigan-state-university-record-example/)
+- [Michigan State University Search Example](https://apis.io/examples/michigan-state-university/michigan-state-university-search-example/)
+
+#### Collections (2)
+
+Postman and Open Collection request collections.
+
+- [Library Catalog Record API](https://apis.io/collections/michigan-state-university/open-michigan-state-university-record-api/)
+- [Library Catalog Record Search API](https://apis.io/collections/michigan-state-university/open-michigan-state-university-search-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Michigan State University — jsonschema rules](https://apis.io/rules/michigan-state-university/michigan-state-university-jsonschema-spectral-rules/)
+- [Michigan State University API Rules](https://apis.io/rules/michigan-state-university/michigan-state-university-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Michigan State University Authentication](https://apis.io/security/michigan-state-university/michigan-state-university-authentication/)
+- [Michigan State University Domain Security](https://apis.io/security/michigan-state-university/michigan-state-university-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Michigan State University Scopes](https://apis.io/scopes/michigan-state-university/michigan-state-university-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Michigan State University Plans Pricing](https://apis.io/plans/michigan-state-university/michigan-state-university-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Michigan State University Rate Limits](https://apis.io/rate-limits/michigan-state-university/michigan-state-university-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Michigan State University Finops](https://apis.io/finops/michigan-state-university/michigan-state-university-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.msu.edu)
+- [Documentation](https://docs.icer.msu.edu/)
+- [API reference](https://catalog.lib.msu.edu/api/v1/?swagger)
+- [Support](https://msu.edu/contact)
+- [Blog](https://msutoday.msu.edu)
+- [Privacy policy](https://msu.edu/privacy)
+- [GitHub](https://github.com/MSU-Libraries)
+
+## API Evangelist rating
+
+**Kin Score 30.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 48.8 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 5.3 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.5** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/michigan-state-university/](https://apis.io/providers/michigan-state-university/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Michigan State University: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/michigan-state-university/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
